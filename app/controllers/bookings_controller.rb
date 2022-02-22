@@ -1,11 +1,15 @@
 class BookingsController < ApplicationController
+
+  def index
+    @booking = policy_scope(Booking)
+  end
+
   def new
     @forest = Forest.find(params[:forest_id])
     @booking = Booking.new
   end
 
   def create
-    if Booking.available?
     @booking = Booking.new(booking_params)
     @forest = Forest.find(params[:forest_id])
     @booking.forest = @forest
@@ -14,16 +18,6 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
-    @booking = Booking.find(params[:id])
-  end
-
-  def update
-    @booking = Booking.find(params[:id])
-    @booking.update(booking_params)
-    redirect_to forest_path(@forest)
   end
 
   def destroy

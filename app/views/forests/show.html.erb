@@ -1,5 +1,6 @@
 <%= @forest.title %> <%= @forest.user %>
 
+<%= link_to 'Book forest', new_forest_booking_path(@forest) %>
 <%= link_to 'Edit forest', edit_forest_path %>
 <%= link_to "Delete forest",
             forest_path(@forest),
