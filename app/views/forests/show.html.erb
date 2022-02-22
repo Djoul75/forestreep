@@ -1,0 +1,7 @@
+<%= @forest.title %> <%= @forest.user %>
+
+<%= link_to 'Edit forest', edit_forest_path %>
+<%= link_to "Delete forest",
+            forest_path(@forest),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>

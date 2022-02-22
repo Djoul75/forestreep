@@ -1,0 +1,7 @@
+<% @forests.each do |forest| %>
+  <p><%= link_to forest.title, forest_path(forest) %></p>
+<% end %>
+
+<% if policy(Forest).create? %>
+  <%= link_to 'Add a forest', new_forest_path %>
+<% end %>
