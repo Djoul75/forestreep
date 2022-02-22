@@ -1,27 +1,63 @@
 <div class="banner">
-  <h1>Titre</h1>
-  <%= link_to 'Call to action', '#' %>
+  <% if user_signed_in? %>
+  <h1>Need money ?</h1>
+  <%= link_to 'Become owner', '/users/sign_up' %>
+  <% else %>
+  <h1>Need to escape ?</h1>
+  <%= link_to 'Sign up', '/users/sign_up' %>
+  <% end %>
 </div>
 
-<div class="exemples">
-  <div class="cards">
-    <div class="card">
-      Card d'exemple
+<div class="home-exemples">
+  <div class="home-cards">
+    <div class="home-card gnome1">
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="far fa-star"></i>
+      <br>
+      <p>Forest Gump, <i>Paris</i></p>
+      <br>
+      <p><i>"Super séjour trop wow !"</i></p>
     </div>
-    <div class="card">
-      Card d'exemple
+    <div class="home-card gnome2">
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <br>
+      <p>Forest Whitaker, <i>Los Angeles</i></p>
+      <br>
+      <p><i>"Forêt so cute, je recommande Forestreep"</i></p>
     </div>
-    <div class="card">
-      Card d'exemple
+    <div class="home-card gnome3">
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <br>
+      <p>JuL, <i>Marseille</i></p>
+      <br>
+      <p><i>"Wala super appli"</i></p>
     </div>
-    <div class="card">
-      Card d'exemple
+    <div class="home-card gnome4">
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="far fa-star"></i>
+      <br>
+      <p>Madonna, <i>New York</i></p>
+      <br>
+      <p><i>"Vraiment pratique, merci Forestreep"</i></p>
     </div>
   </div>
 </div>
 
 <div class="banner-experience">
-  Faire une banner
-  <h1>Titre</h1>
-  <button>Call to action</button>
+  <h1>Talk with superhost</h1>
+  <%= link_to 'Become owner' %>
 </div>
