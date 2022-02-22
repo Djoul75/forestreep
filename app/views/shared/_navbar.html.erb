@@ -1,3 +1,38 @@
-<div class="navbar">
-  Faire une navbar
+<div class="navbar p-3">
+  <div id="logo">
+    <%= image_tag 'logo', width: 50%>
+  </div>
+  <div class="search-bar d-flex">
+    <input class="form-control form-control-lg border-end-0 border border-dark rounded-pill rounded-end" type="text" placeholder="Search..." />
+    <span class="input-group-append">
+      <button class="btn btn-outline-dark btn-lg border-start-0 rounded-pill rounded-start" type="button">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+
+    <%# <%= simple_form_for 'je sais pas' do |f| %>
+      <%#= f.input :city %>
+      <%#= f.input :start_date %>
+      <%#= f.input :end_date %>
+      <%#= f.submit class: "btn btn-outline-dark btn-lg border-start-0 rounded-pill rounded-start" value: "<i class='fa fa-search'></i>" %>
+    <%# end %>
+  </div>
+
+  <div class="login-avatar">
+    <% if user_signed_in? %>
+      <div class="dropdown-toggle d-flex" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-controller="toggle-dropdown" data-action="click->toggle-dropdown#toggle">
+          <div class="ligne"></div>
+        <img class="avatar" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+      </div>
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <div id="test">
+          <%= link_to "Action", "#", class: "dropdown-item" %>
+          <%= link_to "Another action", "#", class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      </div>
+    <% else %>
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+    <% end %>
+  </div>
 </div>

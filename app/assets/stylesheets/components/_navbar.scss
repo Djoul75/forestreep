@@ -1,6 +1,6 @@
-.navbar-lewagon {
+.navbar {
   justify-content: space-between;
-  background: white;
+  background: $almost-black;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +9,90 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.search-bar {
+  background: $beige;
+  border-radius: 50px;
+  border: none;
+
+  button:hover {
+    background: $kaki;
+  }
+}
+
+#navbarDropdown {
+  cursor: pointer;
+  background-color: $beige;
+  padding: 0 0 0 1vw;
+  border-radius: 50px;
+
+  &:hover {
+    background: $kaki;
+  }
+}
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.dropdown-menu {
+  display: inset;
+  opacity: 0;
+  transition: ease 1s;
+}
+
+.dropdown-menu.show {
+  display: inset;
+  opacity: 1 !important;
+  transition: ease 1s;
+}
+
+.ligne {
+  width: 15px;
+  height: 2px;
+  border-radius: 5px;
+  background: #333;
+  position: relative;
+  top: 20px;
+  right: 7px;
+  transition: all 0ms 300ms;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    background: #333;
+    width: 100%;
+    height: 2px;
+    border-radius: 5px;
+    transition: bottom 300ms 300ms ease, transform 300ms ease;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    background: #333;
+    width: 100%;
+    height: 2px;
+    border-radius: 5px;
+    transition: top 300ms 300ms ease, transform 300ms ease;
+  }
+}
+
+#navbarDropdown.active .ligne::after {
+  top: 0;
+  transform: rotate(45deg);
+  transition: top 300ms ease, transform 300ms 300ms ease;
+}
+
+#navbarDropdown.active .ligne {
+  background: transparent;
+}
+
+#navbarDropdown.active .ligne::before {
+  bottom: 0;
+  transform: rotate(-45deg);
+  transition: bottom 300ms ease, transform 300ms 300ms ease;
 }
