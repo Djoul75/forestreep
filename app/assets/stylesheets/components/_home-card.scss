@@ -1,0 +1,35 @@
+.home-cards {
+  display: flex;
+  justify-content: space-between;
+  margin: 10vw 5vw;
+}
+
+.home-card {
+  width: 20vw;
+  height: 40vh;
+  border-radius: 10px;
+  box-shadow: 3px 5px 15px lightgrey;
+  padding: 3vw;
+  color: white;
+}
+
+.gnome1 {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('gnomes/gnome1');
+  background-size: cover;
+  background-position: center;
+}
+.gnome2 {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('gnomes/gnome2');
+  background-size: cover;
+  background-position: center;
+}
+.gnome3 {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('gnomes/gnome3');
+  background-size: cover;
+  background-position: center;
+}
+.gnome4 {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('gnomes/gnome4');
+  background-size: cover;
+  background-position: center;
+}

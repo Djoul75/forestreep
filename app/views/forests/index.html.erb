@@ -1,7 +1,29 @@
-<% @forests.each do |forest| %>
-  <p><%= link_to forest.title, forest_path(forest) %></p>
-<% end %>
+<h1>Find your next forestreep :</h1>
 
-<% if policy(Forest).create? %>
-  <%= link_to 'Add a forest', new_forest_path %>
-<% end %>
+<div class="wrap">
+
+  <div class="cards-container">
+
+    <% @forests.each do |forest| %>
+      <div class="card">
+        <div class="card-image">
+        </div>
+        <div class="card-infos">
+          <h3><%= link_to forest.title, forest_path(forest) %></h3>
+          <p><%= link_to forest.description, forest_path(forest) %></p>
+          <p><%= link_to forest.address, forest_path(forest) %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if policy(Forest).create? %>
+      <%= link_to 'Add a forest', new_forest_path %>
+    <% end %>
+
+  </div>
+
+  <div>
+      <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1Ijoia2xhdWhhaXQiLCJhIjoiY2t6OGZjZ2c0MHQ0ODJ4cW1sd2k1dmhucSJ9.633b3meVJ5Sro_D6Y5Yzsg'>
+  </div>
+
+</div>

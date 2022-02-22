@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :forests
   has_many :bookings, dependent: :destroy
+  has_one_attached :photo
   # has_many :reviews #Commented car pas de user_review en place pour l'instant
 
   # validates :first_name, :last_name, presence: true

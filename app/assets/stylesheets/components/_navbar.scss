@@ -4,6 +4,7 @@
   height: 10vh;
   position: sticky;
   top: 0;
+  z-index: 999;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -98,4 +99,19 @@
   bottom: 0;
   transform: rotate(-45deg);
   transition: bottom 300ms ease, transform 300ms 300ms ease;
+}
+
+.nav-login {
+  background-color: $beige;
+  border-radius: 50px;
+  color: $almost-black;
+
+  &:hover {
+    background: $kaki;
+    color: $almost-black;
+  }
+}
+
+.form-control:focus {
+  box-shadow: none;
 }
