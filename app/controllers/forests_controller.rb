@@ -54,7 +54,7 @@ class ForestsController < ApplicationController
   private
 
   def forest_params
-    params.require(:forest).permit(:title, :description, :address, :tree, :animals, :price, :size)
+    params.require(:forest).permit(:title, :description, :address, :tree, :animals, :price, :size, photos: [])
   end
 
   def forest_find
