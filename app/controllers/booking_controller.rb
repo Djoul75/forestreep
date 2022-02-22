@@ -32,8 +32,6 @@ class BookingsController < ApplicationController
     redirect_to forest_path(@forest)
   end
 
-  end
-
   private
 
   def booking_params
