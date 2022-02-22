@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :forests
-  has_many :bookings
-  has_many :reviews
+  has_many :bookings, dependent: :destroy
+  # has_many :reviews #Commented car pas de user_review en place pour l'instant
 
   # validates :first_name, :last_name, presence: true
   # validates :first_name, :last_name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
