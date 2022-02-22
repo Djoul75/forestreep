@@ -15,6 +15,22 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def available?
+    # récupérer tous les bookings d'une foret
+    @forest = Forest.find(params[:forest_id])
+    @bookings = @forest.bookings
+    # récupérer les params de l'user (dates début / fin)
+
+    # avec les dates de début et de fin de chaque booking
+    # si la
+    # on itere avec each pour voir si les dates de début et de fin des bookings,
+    # sont incluses dans les dates de l'utlisateur. si les dates de début et de fin
+    # incluent les dates de l'utlisateur : renvoie false
+    # on itère pour voir si les dates de l'utilisateur sont incluses dans l'un
+    # des bookings. si c'est le cas renvoie false
+  end
+
+
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
