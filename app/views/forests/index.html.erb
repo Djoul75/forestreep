@@ -5,8 +5,13 @@
   <div class="cards-container">
 
     <% @forests.each do |forest| %>
-      <div class="card">
+      <div class="forest-card">
         <div class="card-image">
+          <% if forest.photos.first %>
+            <%= cl_image_tag forest.photos.first.key %>
+          <% else %>
+            <%= image_tag 'forests/forest1.jpg'%>
+          <% end %>
         </div>
         <div class="card-infos">
           <h3><%= link_to forest.title, forest_path(forest) %></h3>
@@ -15,6 +20,7 @@
         </div>
       </div>
     <% end %>
+
 
     <% if policy(Forest).create? %>
       <%= link_to 'Add a forest', new_forest_path %>
