@@ -1,13 +1,17 @@
 <div class="navbar p-3">
   <div id="logo">
-    <%= image_tag 'logo.png', width: 50%>
+    <%= link_to '/' do %>
+      <%= image_tag 'logo.png', width: 50%>
+    <% end %>
   </div>
   <div class="search-bar d-flex">
     <input class="form-control form-control-lg border-end-0 border border-dark rounded-pill rounded-end" type="text" placeholder="Search..." />
     <span class="input-group-append">
-      <button class="btn btn-outline-dark btn-lg border-start-0 rounded-pill rounded-start" type="button">
-        <i class="fa fa-search"></i>
-      </button>
+      <%= link_to '/forests' do %>
+        <button class="btn btn-outline-dark btn-lg border-start-0 rounded-pill rounded-start" type="button">
+          <i class="fa fa-search"></i>
+        </button>
+      <% end %>
     </span>
 
     <%# <%= simple_form_for 'je sais pas' do |f| %>
@@ -32,7 +36,7 @@
         </div>
       </div>
     <% else %>
-        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        <%= link_to "Login", new_user_session_path, class: "nav-link nav-login" %>
     <% end %>
   </div>
 </div>
