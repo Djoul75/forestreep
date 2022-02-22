@@ -1,7 +1,7 @@
 class Forest < ApplicationRecord
   belongs_to :user
-  has_many :bookings
-  has_many :reviews
+  has_many :bookings, dependent: :destroy
+  has_many :forest_reviews, dependent: :destroy
 
   validates :title, :description, :address, :tree, :animals, :price, :size, presence: true
   validates :title, length: { in: 6..30 }
