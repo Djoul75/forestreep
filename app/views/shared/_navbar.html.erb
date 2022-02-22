@@ -26,7 +26,11 @@
     <% if user_signed_in? %>
       <div class="dropdown-toggle d-flex" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-controller="toggle-dropdown" data-action="click->toggle-dropdown#toggle">
           <div class="ligne"></div>
+        <% if current_user.photo.key %>
+        <img class="avatar" src= <% cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %> />
+        <% else %>
         <img class="avatar" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+        <% end %>
       </div>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         <div id="test">
