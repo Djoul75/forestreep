@@ -1,6 +1,9 @@
 .navbar {
   justify-content: space-between;
   background: $almost-black;
+  height: 10vh;
+  position: sticky;
+  top: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
