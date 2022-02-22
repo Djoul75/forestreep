@@ -1,17 +1,20 @@
 .wrap {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .cards-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 50px;
-  padding: 16px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  padding: 20px;
   background-color: white;
+  flex-grow: 1;
 }
 
-.card {
-  height: 100px;
+.forest-card {
+  height: 150px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -19,25 +22,32 @@
   justify-content: space-around;
   font-size: 15px;
   background-color: #e6dfbf;
-  width: 220px;
+  width: 20vw;
   border: none;
 }
 
-.card a {
+.forest-card a {
   text-decoration: none;
   color: black;
 }
 
-.card a:hover {
+.forest-card a:hover {
   text-decoration: none;
   color: black;
   font-weight: bolder;
 }
 
-.card-image {
-  height: 150px;
-  width: 150px;
-  background-size: cover;
+.card-image img {
+  height: 130px;
+  width: 130px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin: 2px;
+}
+
+.card-infos {
+  margin: 10px;
+  padding: 10px;
 }
 
 .card-infos h3 {
