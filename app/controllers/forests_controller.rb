@@ -13,7 +13,8 @@ class ForestsController < ApplicationController
   end
 
   def index_owner
-    @forests = Forest.where(current_user == :user)
+    @forests = Forest.where(user: current_user)
+    authorize @forests
   end
 
   def show
