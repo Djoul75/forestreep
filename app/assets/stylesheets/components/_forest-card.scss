@@ -41,18 +41,23 @@
 
 .card-infos {
   margin: 10px;
-  padding: 10px;
+  padding: 2px;
   flex-grow: 1;
+  width: 15vh;
+  height: 15vh;
 }
 
 .card-infos h3 {
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bolder;
 }
 
 .card-infos p {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: lighter;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 50px;
 }
 
 .coeur-price {
@@ -64,6 +69,12 @@
   align-items: flex-end;
 
   i {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+
+  p {
+    font-weight: bold;
+    font-size: 0.9em;
   }
 }
