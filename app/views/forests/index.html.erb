@@ -28,8 +28,12 @@
 
   </div>
 
-  <div>
-      <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1Ijoia2xhdWhhaXQiLCJhIjoiY2t6OGZjZ2c0MHQ0ODJ4cW1sd2k1dmhucSJ9.633b3meVJ5Sro_D6Y5Yzsg'>
-  </div>
+
+    <div style="width: 100%; height: 600px;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+      <%# <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1Ijoia2xhdWhhaXQiLCJhIjoiY2t6OGZjZ2c0MHQ0ODJ4cW1sd2k1dmhucSJ9.633b3meVJ5Sro_D6Y5Yzsg'> %>
 
 </div>

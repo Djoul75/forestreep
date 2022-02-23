@@ -3,6 +3,13 @@ class ForestsController < ApplicationController
 
   def index
     @forests = policy_scope(Forest)
+
+    @markers = @forests.geocoded.map do |forest|
+      {
+        lat: forest.latitude,
+        lng: forest.longitude
+      }
+    end
   end
 
   def index_owner

@@ -11,5 +11,7 @@ class Forest < ApplicationRecord
   validates :price, numericality: { in: 15..250 }
   validates :size, numericality: { only_integer: true }
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
   # add inclusion to tree and animals
 end
