@@ -3,8 +3,8 @@
     <%= f.input :title, placeholder: 'Beatiful Forest' %>
     <%= f.input :description, placeholder: 'Discover my beautiful forest that will fill your heart with love during your rental' %>
     <%= f.input :address, placeholder: '14 rue Crespin du Gast 75011 Paris' %>
-    <%= f.input :tree, placeholder: 'White Spruce, Red Pine' %>
-    <%= f.input :animals, placeholder: 'Marmot, tiger, kitten' %>
+    <%= f.input :tree, collection: Forest::TREES %>
+    <%= f.input :animals, collection: Forest::ANIMALS %>
     <%= f.input :price, placeholder: 'between 15$ and 250$' %>
     <%= f.input :size, placeholder: '35' %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
