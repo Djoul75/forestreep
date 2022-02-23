@@ -1,0 +1,10 @@
+.btn-outline-success {
+  color: $kaki;
+  border-color: $kaki;
+
+  &:hover {
+    background-color: $kaki;
+    border-color: $kaki;
+    color: $almost-black;
+  }
+}
