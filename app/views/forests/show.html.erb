@@ -1,84 +1,86 @@
-<%= @forest.title %> <%= @forest.user %>
-
-<%= link_to 'Book forest', new_forest_booking_path(@forest) %>
-<%= link_to 'Edit forest', edit_forest_path %>
-<%= link_to "Delete forest",
-            forest_path(@forest),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-
-
-<% @forest.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-
-<div class="forest-title">
-  <h1><%= @forest.title %></h1>
-  <h2><%= @forest.address %></h2>
-  <h6>share</h6>
-  <h6>save</h6>
-</div>
-
-<div class="forest-photos">
-  <div class="forest-photo-big"></div>
-  <div class="forest-photos-small"></div>
-</div>
-
-<div class="details-booking-container">
-  <div class="forest-details">
-    <div class="forest-details-infos">
-      <div>
-        <h3>Entire forest hosted by<%= @forest.user %></h3>
-        <h5>Type of trees : <%= @forest.tree %> ● Type of animals : <%= @forest.animals %> ● Forest size : <%= @forest.size %> m²</h5>
-      </div>
-      <div>
-        <img class="avatar" src="/images/gnomes/gnome1.jpg" alt="gnome">
-      </div>
-    </div>
-
+<div class="forest-show-container">
+  <div class="forest-header-show">
     <div>
-      <div><h3><%= @forest.user %> is a Superhost</h3><p>Superhosts are experienced gnomes, who are commited to to provinding great stays for their guests.</p></div>
-      <div><h3>Great forest</h3><p>100% of recent guests gave the forest a 5-star rating.</p></div>
-      <div><h3>Free cancellation before march 23</h3></div>
+      <h1><%= @forest.title %></h1>
     </div>
-
-    <div class="forest-description">
-      <h3> <%= @forest.description %></h3>
-    </div>
-
-    <div>
-      <div><h3>What this forest offers</h3></div>
-      <div><p>campfire</p></div>
-      <div><p>barbecue</p></div>
-      <div><p>dwarf toss</p></div>
-      <div><p>bikes</p></div>
-      <div><p>mushroom picking</p></div>
-      <div><p>picnic</p></div>
-      <div><p>building hut</p></div>
-      <div><p>tree climbing</p></div>
-    </div>
-
-    <div class="calendar">
-      <h2>N nights in <%= @forest.address%></h2>
-    </div>
-
-    <div class="forest-reviews">
+   <div class="forest-header-show-details">
+      <h6><%= @forest.address %></h6>
     </div>
   </div>
 
-  <div class="forest-booking-card">
-    <h5><%=@forest.price%> € / night </h5>
-    <table>
-      <tr>Your booking</tr>
-      <tr>
-        <td> Check-in </td>
-        <td> Check-out </td>
-      </tr>
-      <tr>
-        <td>Total price</td>
-      </tr>
-    </table>
-    <a href="">Book now</a>
+  <div class="show-forest-photos">
+    <% @forest.photos.each do |photo| %>
+        <div class="forest-photo">
+          %= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        </div>
+      <% end %>
   </div>
 
+  <div class="details-booking-container">
+    <div class="forest-details">
+      <div class="forest-details-infos">
+        <div>
+          <h3>Entire forest ● Hosted by<%= @forest.user %></h3>
+          <h5>Type of trees : <%= @forest.tree %> ● Type of animals : <%= @forest.animals %> ● Forest size : <%= @forest.size %> m²</h5>
+        </div>
+        <div>
+          <img class="avatar" src="/images/gnomes/gnome1.jpg" alt="gnome">
+        </div>
+      </div>
+
+      <div>
+        <div><h3><%= @forest.user %> is a Superhost</h3><p>Superhosts are experienced gnomes, who are commited to to provinding great stays for their guests.</p></div>
+        <div><h3>Great forest</h3><p>100% of recent guests gave the forest a 5-star rating.</p></div>
+        <div><h3>Free cancellation before march 23</h3></div>
+      </div>
+
+      <div class="forest-description">
+        <h3> <%= @forest.description %></h3>
+      </div>
+
+      <div>
+        <div><h3>What this forest offers</h3></div>
+        <div><p>campfire</p></div>
+        <div><p>barbecue</p></div>
+        <div><p>dwarf toss</p></div>
+        <div><p>bikes</p></div>
+        <div><p>mushroom picking</p></div>
+        <div><p>picnic</p></div>
+        <div><p>building hut</p></div>
+        <div><p>tree climbing</p></div>
+      </div>
+
+      <div class="calendar">
+        <h2>N nights in <%= @forest.address%></h2>
+      </div>
+
+      <div class="forest-reviews">
+      </div>
+    </div>
+
+    <div class="forest-booking-card">
+      <h3><%=@forest.price%> € / night </h3>
+      <table>
+        <tr>Your booking</tr>
+        <tr>
+          <td> Check-in </td>
+          <td> Check-out </td>
+        </tr>
+        <tr>
+          <td>Total price</td>
+        </tr>
+      </table>
+      <a class="btn-outline-success" href="">Book now</a>
+    </div>
+
+  </div>
+</div>
+
+<div>
+  <%= link_to 'Book forest', new_forest_booking_path(@forest) %>
+  <%= link_to 'Edit forest', edit_forest_path %>
+  <%= link_to "Delete forest",
+              forest_path(@forest),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
 </div>
