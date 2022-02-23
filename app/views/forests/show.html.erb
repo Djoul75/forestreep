@@ -1,7 +1,9 @@
-<div class="forest-show-container">
+<div class="forest-show-container col-8 offset-2">
+  <%= link_to "Back to results page", '/forests', class: 'back-btn'%>
+
   <div class="forest-header-show">
     <div>
-      <h1><%= @forest.title %></h1>
+      <h1><%= @forest.title.capitalize %></h1>
     </div>
    <div class="forest-header-show-details">
       <h6><%= @forest.address %></h6>
@@ -11,7 +13,7 @@
   <div class="show-forest-photos">
     <% @forest.photos.each do |photo| %>
         <div class="forest-photo">
-          %= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag photo.first.key, height: 300, width: 400, crop: :fill %>
         </div>
       <% end %>
   </div>
@@ -20,38 +22,44 @@
     <div class="forest-details">
       <div class="forest-details-infos">
         <div>
-          <h3>Entire forest ● Hosted by<%= @forest.user %></h3>
-          <h5>Type of trees : <%= @forest.tree %> ● Type of animals : <%= @forest.animals %> ● Forest size : <%= @forest.size %> m²</h5>
+          <h3>Entire forest ● Hosted by <%= @forest.user.first_name %> <%= @forest.user.last_name %></h3>
+          <p>Type of trees : <%= @forest.tree %> ● Type of animals : <%= @forest.animals %> ● Forest size : <%= @forest.size %> m²</p>
         </div>
-        <div>
-          <img class="avatar" src="/images/gnomes/gnome1.jpg" alt="gnome">
+        <div class='user-photo-avatar'>
+          <% if current_user.photo.key %>
+            <%= cl_image_tag current_user.photo.key, crop: :fill, class: 'avatar' %>
+          <% else %>
+            <%= image_tag 'gnome-avatar.jpg', class: 'avatar' %>
+          <% end %>
         </div>
       </div>
 
-      <div>
-        <div><h3><%= @forest.user %> is a Superhost</h3><p>Superhosts are experienced gnomes, who are commited to to provinding great stays for their guests.</p></div>
-        <div><h3>Great forest</h3><p>100% of recent guests gave the forest a 5-star rating.</p></div>
-        <div><h3>Free cancellation before march 23</h3></div>
+      <div class="infos">
+        <h3><%= @forest.user.first_name %> <%= @forest.user.last_name %> is a Superhost</h3>
+        <p>Superhosts are experienced gnomes, who are commited to to provinding great stays for their guests.</p>
+        <h3>Great forest</h3>
+        <p>100% of recent guests gave the forest a 5-star rating.</p>
+        <h3>Free cancellation before march 23</h3>
       </div>
 
       <div class="forest-description">
-        <h3> <%= @forest.description %></h3>
+        <h4> <%= @forest.description %></h4>
       </div>
 
-      <div>
-        <div><h3>What this forest offers</h3></div>
-        <div><p>campfire</p></div>
-        <div><p>barbecue</p></div>
-        <div><p>dwarf toss</p></div>
-        <div><p>bikes</p></div>
-        <div><p>mushroom picking</p></div>
-        <div><p>picnic</p></div>
-        <div><p>building hut</p></div>
-        <div><p>tree climbing</p></div>
+      <div class="offers">
+        <h3>What this forest offers</h3>
+        <p>campfire</p>
+        <p>barbecue</p>
+        <p>dwarf toss</p>
+        <p>bikes</p>
+        <p>mushroom picking</p>
+        <p>picnic</p>
+        <p>building hut</p>
+        <p>tree climbing</p>
       </div>
 
       <div class="calendar">
-        <h2>N nights in <%= @forest.address%></h2>
+        <h2>5 nights in <%= @forest.address%></h2>
       </div>
 
       <div class="forest-reviews">

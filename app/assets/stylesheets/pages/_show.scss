@@ -1,0 +1,95 @@
+.forest-show-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh;
+}
+
+.back-btn {
+  background-color: $beige;
+  border-radius: 50px;
+  color: $almost-black;
+  width: fit-content;
+  padding: 0.5vw 2vw;
+  text-decoration: none;
+  margin-bottom: 2vw;
+
+  &:hover {
+    background: $kaki;
+    color: $almost-black;
+  }
+}
+
+.forest-header-show {
+  border-bottom: 2px solid $kaki;
+  padding-bottom: 2vw;
+}
+
+.show-forest-photos {
+  width: 100%;
+  height: 50vh;
+  background-color: antiquewhite;
+  margin: 5vw 0;
+}
+
+.details-booking-container {
+  display: flex;
+  justify-content: space-between;
+
+  .forest-details{
+    width: 70%;
+
+    h3 {
+      color: $dark-green;
+    }
+
+    .forest-details-infos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid $kaki;
+      padding: 2vw;
+
+      p {
+        font-size: 13px;
+        color: $almost-black;
+      }
+
+      .user-photo-avatar {
+        width: 10%;
+
+        img {
+          width: 4vw;
+          height: 4vw;
+        }
+      }
+    }
+
+    .infos {
+      border-bottom: 2px solid $kaki;
+      padding: 2vw;
+    }
+
+    .forest-description {
+      border-bottom: 2px solid $kaki;
+      padding: 2vw;
+    }
+
+    .offers {
+      border-bottom: 2px solid $kaki;
+      padding: 2vw;
+    }
+
+    .calendar {
+      padding: 2vw;
+    }
+
+  }
+  .forest-booking-card {
+    width: 25%;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    height: fit-content;
+    margin-top: 2vw;
+  }
+}
