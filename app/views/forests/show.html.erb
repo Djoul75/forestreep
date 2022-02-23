@@ -12,9 +12,9 @@
 
   <div class="show-forest-photos">
     <% @forest.photos.first(1).each do |photo| %>
-        <div class="forest-photo">
+        <%# <div class="forest-photo"> %>
           <%= cl_image_tag photo.key %>
-        </div>
+        <%# </div> %>
       <% end %>
   </div>
 
