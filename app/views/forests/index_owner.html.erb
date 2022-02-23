@@ -1,7 +1,39 @@
-<% if @forests.length == 0 %>
-  <%= link_to 'Add a forest', new_forest_path %>
-<% else %>
-  <% @forests.each do |forest| %>
-    <p><%= forest.title %></p>
-  <% end %>
-<% end %>
+<div class="wrapper">
+  <div class="nav-lat">
+      <div class="nav-bloc n-rentals">
+        <h2>Rentals</h2>
+      </div>
+      <div class="nav-bloc n-forests">
+        <h2 class="active">Forests</h2>
+      </div>
+      <div class="nav-bloc n-notifications">
+        <h2>Notifications</h2>
+      </div>
+      <div class="nav-bloc n-messages">
+        <h2>Messages</h2>
+      </div>
+  </div>
+
+  <div class="dashboard-pages">
+    <div class="page-rentals">
+      <h1>My Rentals:</h1>
+    </div>
+    <div class="page-forests active">
+      <h1>My Forests:</h1>
+      <% if @forests.length == 0 %>
+        <%= link_to 'Add a forest', new_forest_path %>
+      <% else %>
+        <% @forests.each do |forest| %>
+          <p><%= forest.title %></p>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="page-notifications">
+      <h1>My Notifications:</h1>
+    </div>
+    <div class="page-messages">
+      <h1>My Messages:</h1>
+    </div>
+  </div>
+
+</div>
