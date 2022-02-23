@@ -1,7 +1,10 @@
 .home-cards {
+  box-sizing: border-box;
   display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 2vw 5vw;
   justify-content: space-between;
-  margin: 10vw 5vw;
 }
 
 .home-card {
@@ -11,6 +14,10 @@
   box-shadow: 3px 5px 15px lightgrey;
   padding: 3vw;
   color: white;
+}
+
+.home-cards::-webkit-scrollbar {
+  display: none;
 }
 
 .gnome1 {
