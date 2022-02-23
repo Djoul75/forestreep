@@ -5,9 +5,9 @@ class Forest < ApplicationRecord
   has_many_attached :photos
 
   validates :title, :description, :address, :tree, :animals, :price, :size, presence: true
-  validates :title, length: { in: 6..30 }
+  validates :title, length: { in: 6..150 }
   validates :title, uniqueness: true
-  validates :description, :address, length: { in: 6..150 }
+  validates :description, :address, length: { in: 6..600 }
   validates :price, numericality: { in: 15..250 }
   validates :size, numericality: { only_integer: true }
 
