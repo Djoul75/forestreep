@@ -13,7 +13,7 @@
   <div class="show-forest-photos">
     <% @forest.photos.each do |photo| %>
         <div class="forest-photo">
-          <%= cl_image_tag photo.first.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
         </div>
       <% end %>
   </div>
