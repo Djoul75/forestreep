@@ -11,9 +11,9 @@
   </div>
 
   <div class="show-forest-photos">
-    <% @forest.photos.each do |photo| %>
+    <% @forest.photos.first(1).each do |photo| %>
         <div class="forest-photo">
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag photo.key %>
         </div>
       <% end %>
   </div>
@@ -26,8 +26,8 @@
           <p>Type of trees : <%= @forest.tree %> ● Type of animals : <%= @forest.animals %> ● Forest size : <%= @forest.size %> m²</p>
         </div>
         <div class='user-photo-avatar'>
-          <% if current_user.photo.key %>
-            <%= cl_image_tag current_user.photo.key, crop: :fill, class: 'avatar' %>
+          <% if @forest.user.photo.key %>
+            <%= cl_image_tag @forest.user.photo.key, crop: :fill, class: 'avatar' %>
           <% else %>
             <%= image_tag 'gnome-avatar.jpg', class: 'avatar' %>
           <% end %>
@@ -59,8 +59,9 @@
       </div>
 
       <div class="calendar">
-        <h2>5 nights in <%= @forest.address%></h2>
+        <h4>5 nights in <%= @forest.address%></h2>
       </div>
+
 
       <div class="forest-reviews">
       </div>
