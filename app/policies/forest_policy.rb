@@ -13,7 +13,7 @@ class ForestPolicy < ApplicationPolicy
     end
   end
 
-  def index?
+  def index_owner?
     true
   end
 

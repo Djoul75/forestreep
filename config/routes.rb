@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :users, except: %i[index show]
   resources :forests do
     resources :reviews, only: %i[new create]
-    resources :bookings, only: [:new, :create, :update, :destroy]
+    resources :bookings, only: %i[new create update destroy]
+    collection do
+      get :index_owner
+    end
   end
 end

@@ -1,1 +1,7 @@
-<%= @forests %>
+<% if @forests.length == 0 %>
+  <%= link_to 'Add a forest', new_forest_path %>
+<% else %>
+  <% @forests.each do |forest| %>
+    <p><%= forest.title %></p>
+  <% end %>
+<% end %>
