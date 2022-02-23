@@ -1,45 +1,39 @@
 .wrap {
   display: flex;
   width: 100%;
-  justify-content: space-between;
 }
 
 .cards-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
+  display: block;
+  width: 50%;
   padding: 20px;
-  background-color: white;
+  background-color: $beige;
   flex-grow: 1;
+
+  a {
+    text-decoration: none;
+    color: $almost-black;
+  }
 }
 
 .forest-card {
-  height: 150px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 20vh;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  font-size: 15px;
-  background-color: #e6dfbf;
-  width: 20vw;
-  border: none;
+  width: 100%;
+  padding: 2vh;
+  border-bottom: 2px solid $kaki;
+  position: relative;
 }
 
-.forest-card a {
+.forest-card:hover {
+  background: $kaki;
   text-decoration: none;
-  color: black;
-}
-
-.forest-card a:hover {
-  text-decoration: none;
-  color: black;
-  font-weight: bolder;
 }
 
 .card-image img {
-  height: 130px;
-  width: 130px;
+  width: 15vh;
+  height: 15vh;
   border-radius: 5px;
   object-fit: cover;
   margin: 2px;
@@ -48,14 +42,28 @@
 .card-infos {
   margin: 10px;
   padding: 10px;
+  flex-grow: 1;
 }
 
 .card-infos h3 {
-  font-size: 12px;
+  font-size: 2rem;
   font-weight: bolder;
 }
 
 .card-infos p {
-  font-size: 8px;
+  font-size: 1rem;
   font-weight: lighter;
+}
+
+.coeur-price {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  i {
+    font-size: 2rem;
+  }
 }
