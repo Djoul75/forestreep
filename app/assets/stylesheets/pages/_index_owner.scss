@@ -33,6 +33,7 @@
     padding-left: 30%;
     display: flex;
     justify-content: space-between;
+    // z-index: 999;
 
     .fa-eye:hover {
       color: rgb(29, 114, 29);
@@ -46,4 +47,9 @@
       color: rgb(250, 81, 81);
     }
   }
+}
+
+.welcome-back {
+  text-align: center;
+  margin-bottom: 5vh;
 }
