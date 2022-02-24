@@ -1,35 +1,43 @@
 <div class="container">
 
-  <h2>Sign up</h2>
+  <div class="text-center" id="form-title"><h1>Sign up</h1></div>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :first_name, placeholder: "Forrest", required: true %>
-      <%= f.input :last_name, placeholder: "Gump", required: true %>
+      <div class="form-text">First Name ✍️</div>
+      <%= f.input :first_name, placeholder: "Forrest", required: true, label: false %>
+      <div class="form-text">Last Name 🔖</div>
+      <%= f.input :last_name, placeholder: "Gump", required: true, label: false %>
+      <div class="form-text">Promise we won't give it out 🙊</div>
       <%= f.input :email,
                   required: true,
                   autofocus: true,
                   placeholder: "forrest.gump@run.com",
-                  input_html: { autocomplete: "email" }%>
+                  input_html: { autocomplete: "email" },
+                  label: false %>
+      <div class="form-text">Password - Looking away... 🗝️</div>
       <%= f.input :password,
                   required: true,
                   placeholder: "•••••••••",
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  label: false,
                   input_html: { autocomplete: "new-password" } %>
+      <div class="form-text">Is it a match? 💥</div>
       <%= f.input :password_confirmation,
                   required: true,
                   placeholder: "•••••••••",
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :photo, as: :file %>
+                  input_html: { autocomplete: "new-password" },
+                  label: false %>
+      <div class="form-text">Time to put your best selfie! 📸</div>
+      <%= f.input :photo, as: :file, label: false %>
     </div>
 
-    <div class="form-actions nav-login mt-5" style="width: 120px; text-align: center">
-      <%= f.button :submit, "Sign up" %>
+    <div class="text-center">
+      <%= f.button :submit, "Sign up",class: 'btn submit-button'%>
     </div>
   <% end %>
 
-  <p class="mt-5"><%= render "devise/shared/links"%></p>
 
 </div>
