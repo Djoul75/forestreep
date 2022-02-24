@@ -1,0 +1,33 @@
+.nav-lat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2vh 0 2vh 2vh;
+
+  h2 {
+    margin: 0.5vw 0;
+    background: $almost-black;
+    border-radius: 30px 0 0 30px;
+    padding: 1vh 3vh;
+    color: $beige;
+
+    &:hover {
+      background: $beige;
+      color: $almost-black;
+      cursor: pointer;
+      transition: ease 0.5s;
+    }
+  }
+
+  h2.active {
+    background: $beige;
+    color: $almost-black;
+
+    &:hover {
+      background: $beige;
+      cursor: pointer;
+      color: $almost-black;
+      transition: ease 0.5s;
+    }
+  }
+}
