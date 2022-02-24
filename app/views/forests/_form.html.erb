@@ -1,13 +1,33 @@
-<div class="container mt-5 mb-5">
-  <%= simple_form_for(@forest) do |f| %>
-    <%= f.input :title, placeholder: 'Beatiful Forest' %>
-    <%= f.input :description, placeholder: 'Discover my beautiful forest that will fill your heart with love during your rental' %>
-    <%= f.input :address, placeholder: '14 rue Crespin du Gast 75011 Paris' %>
-    <%= f.input :tree, collection: Forest::TREES %>
-    <%= f.input :animals, collection: Forest::ANIMALS %>
-    <%= f.input :price, placeholder: 'between 15$ and 250$' %>
-    <%= f.input :size, placeholder: '35' %>
+<div class="text-center" id="form-title"><h1>New forest</h1></div>
+<div class="container mt-3 mb-5">
+  <%= simple_form_for (@forest),
+  wrapper: :floating_labels_form,
+  wrapper_mappings: {
+    select: :floating_labels_select
+  }  do |f| %>
+    <div class="form-text">The Shire 🧙</div>
+      <%= f.input :title, placeholder: "test"  %>
+    <div class="form-text">Inspire us with your magical forest ✨</div>
+     <%= f.input :description, placeholder: "test" %>
+    <div class="form-text">Where is the magic happening? 🧭</div>
+     <%= f.input :address,placeholder: "test" %>
+     <div class="form-inline">
+        <div class="form-left">
+          <div class="form-text">Where will we build the treehouse? 🌲</div>
+          <%= f.input :tree, collection: Forest::TREES %>
+          <div class="form-text">How big is it? 📏</div>
+          <%= f.input :size, placeholder: "test" %>
+        </div>
+        <div class="form-right">
+          <div class="form-text">Tell us more about the wildlife 🐼</div>
+          <%= f.input :animals, collection: Forest::ANIMALS, placeholder: "test" %>
+          <div class="form-text">What's the rate, mate? 🏷️</div>
+          <%= f.input :price, placeholder: "test" %>
+        </div>
+     </div>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit class: 'btn btn-outline-success'%>
+    <div class="text-center">
+      <%= f.submit class: 'btn submit-button'%>
+    </div>
   <% end %>
 </div>

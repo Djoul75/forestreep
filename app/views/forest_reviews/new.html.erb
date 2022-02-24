@@ -2,6 +2,6 @@
   <%= simple_form_for [@forest, @review] do |f| %>
     <%= f.input :comment, placeholder: 'Your comment' %>
     <%= f.input :rating, collection: 0..5, placeholder: '1-5' %>
-    <%= f.submit class: 'btn btn-outline-success'%>
+    <%= f.submit class: 'btn submit-button'%>
   <% end %>
 </div>
