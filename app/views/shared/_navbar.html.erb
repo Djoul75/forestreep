@@ -31,15 +31,20 @@
     </div>
   </div>
 
-  <div class="search-bar d-flex" data-controller="search-bar" data-action="scroll@window->search-bar#move">
-    <input class="form-control form-control-lg border-end-0 border border-dark rounded-pill rounded-end" type="text" placeholder="Search..." />
-    <span class="input-group-append">
-      <%= link_to '/forests' do %>
-        <button class="btn btn-outline-dark btn-lg border-start-0 rounded-pill rounded-start" type="button">
-          <i class="fa fa-search"></i>
-        </button>
-      <% end %>
-    </span>
+  <div>
+    <%= form_tag forests_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], placeholder: "Find your next forestreep"%>
+    <% end %>
+  </div>
+  <%# <div class="search-bar d-flex" data-controller="search-bar" data-action="scroll@window->search-bar#move"> %>
+     <%# <input class="form-control form-control-lg border-end-0 border border-dark rounded-pill rounded-end" type="text" placeholder="Search..." /> %>
+      <%# <span class="input-group-append"> %>
+      <%#= link_to '/forests' do %>
+         <%# <button class="btn btn-outline-dark btn-lg border-start-0 rounded-pill rounded-start" type="button"> %>
+           <%# <i class="fa fa-search"></i> %>
+         <%# </button> %>
+      <%# end %>
+     <%# </span> %>
 
     <%# <%= simple_form_for 'je sais pas' do |f| %>
       <%#= f.input :city %>
@@ -47,5 +52,5 @@
       <%#= f.input :end_date %>
       <%#= f.submit class: "btn btn-outline-dark btn-lg border-start-0 rounded-pill rounded-start" value: "<i class='fa fa-search'></i>" %>
     <%# end %>
-  </div>
+
 </div>

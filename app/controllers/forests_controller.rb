@@ -4,14 +4,21 @@ class ForestsController < ApplicationController
   def index
     @forests = policy_scope(Forest)
 
-    @markers = @forests.geocoded.map do |forest|
-      {
-        lat: forest.latitude,
-        lng: forest.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { forest: forest }),
-        image_url: helpers.asset_url("logo.png")
-      }
+    if params[:query].present?
+      @forests = Forest.global_search(params[:query])
+    else
+      @forests = Forest.all
     end
+
+    @markers = @forests.geocoded.map do |forest|
+       {
+         lat: forest.latitude,
+         lng: forest.longitude,
+         info_window: render_to_string(partial: "info_window", locals: { forest: forest }),
+         image_url: helpers.asset_url("logo.png")
+       }
+    end
+
   end
 
   def index_owner
