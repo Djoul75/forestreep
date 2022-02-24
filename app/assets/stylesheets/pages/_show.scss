@@ -27,20 +27,55 @@
 .show-forest-photos {
   width: 100%;
   height: 50vh;
-  background-color: antiquewhite;
+  background-color: $beige;
   margin: 5vw 0;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  border-radius: 20px;
 
-  // .forest-photo {
-  //   height: 100%;
-  // }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    // object-position: center;
+  h1 {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    color: $beige;
+    right: 45%;
+    bottom: 12%;
+    font-size: large;
+    opacity: 1;
+    transition: ease 0.5s;
   }
+
+  &:hover {
+    h1 {
+      opacity: 0;
+    }
+  }
+
+  .row-forest-photos {
+    height: 100%;
+    width: fit-content;
+    display: flex;
+
+  }
+
+  .row-forest-photos::-webkit-scrollbar {
+    display: none;
+  }
+
+  .forest-photo {
+    // object-fit: cover;
+
+
+    img {
+      width: auto;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 450ms;
+      padding: 1.5vh;
+      border-radius: 20px;
+    }
+  }
+
 }
 
 .details-booking-container {
