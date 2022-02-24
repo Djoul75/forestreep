@@ -1,7 +1,13 @@
 <h1>Add a reservation</h1>
 
-<%= simple_form_for [@forest, @booking]  do |f| %>
-  <%= f.input :start_date, as: :date, label: "Start date", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
-  <%= f.input :end_date, as: :date, label: "End date", placeholder: "To", wrapper_html: { class: "inline_field_wrapper" } %>
+<%= simple_form_for [@forest, @booking],
+  wrapper: :floating_labels_form,
+  wrapper_mappings: {
+    select: :floating_labels_select
+  }  do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :start_date, as: :string, required: true, input_html: {id: "booking_start_date"} %>
+  <%= f.input :end_date, as: :string, required: true, input_html: {id: "booking_end_date"} %>
+  <%= f.button :button, 'Reset dates', :type => 'reset', :class => 'btn' %>
   <%= f.submit "Submit booking", class: "btn btn-primary" %>
 <% end %>
