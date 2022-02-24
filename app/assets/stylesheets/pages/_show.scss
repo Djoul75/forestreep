@@ -40,7 +40,7 @@
     color: $beige;
     right: 45%;
     bottom: 12%;
-    font-size: large;
+    font-size: xx-large;
     opacity: 1;
     transition: ease 0.5s;
   }
@@ -77,6 +77,38 @@
   }
 
 }
+
+.show-forest-one {
+  width: 100%;
+  height: fit-content;
+  background-color: $beige;
+  margin: 5vw 0;
+  padding: 1.5vh;
+  border-radius: 20px;
+  // overflow: hidden;
+
+  .row-forest-one {
+
+    .forest-photo-one{
+      max-height:70vh;
+      overflow: hidden;
+      border-radius: 20px;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        transition: transform 450ms;
+        border-radius: 20px;
+        object-position: center;
+      }
+    }
+  }
+
+
+}
+
+
+
 
 .details-booking-container {
   display: flex;
@@ -125,9 +157,15 @@
     .offers {
       border-bottom: 2px solid $kaki;
       padding: 2vw;
+
+
+      .pictos-offers {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
     }
 
-    .calendar {
+    .forest-reviews {
       padding: 2vw;
     }
 
@@ -139,5 +177,90 @@
     padding: 10px;
     height: fit-content;
     margin-top: 2vw;
+    position: sticky;
+    top: 12vh;
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: fit-content;
+
+      .btn {
+        padding: 0;
+        margin: 0;
+      }
+
+      .btn-reset {
+        position: relative;
+        bottom: 18%;
+      }
+
+      .button-booking {
+        border: none;
+        background-color: $beige;
+        border-radius: 20px;
+        color: $almost-black;
+        margin-top: 5vh;
+        height: 10vh;
+        font-size: larger;
+
+        &:hover {
+          background: $kaki;
+          color: $almost-black;
+        }
+      }
+    }
   }
+
+  .review-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: fit-content;
+    width: 100%;
+    background: $beige;
+    border-radius: 20px;
+    margin-top: 2vh;
+    padding: 2vh;
+    color: $almost-black;
+
+    .name-rating {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid $almost-black;
+
+      .user-review-infos {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: fit-content;
+        height: 6vh;
+      }
+
+      .fullname {
+        width: fit-content;
+        display: flex;
+        font-size: larger;
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+      }
+
+      .stars {
+        color: $dark-green;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    .comment {
+      flex-grow: 1;
+      margin-top: 2vh;
+      text-align: justify;
+    }
+  }
+
 }

@@ -28,6 +28,7 @@ class ForestsController < ApplicationController
 
   def show
     authorize @forest
+    @booking = Booking.new
   end
 
   def new

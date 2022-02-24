@@ -7,11 +7,6 @@ class BookingsController < ApplicationController
     @booking = policy_scope(Booking)
   end
 
-  def new
-    @booking = Booking.new
-    authorize @booking
-  end
-
   def create
     @booking = Booking.new(booking_params)
     authorize @booking
@@ -24,8 +19,9 @@ class BookingsController < ApplicationController
       if @booking.save
         redirect_to forest_path(@forest)
       else
-        render :new
+        render "/forests/show"
       end
+
     end
   end
 

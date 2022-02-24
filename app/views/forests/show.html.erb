@@ -10,16 +10,29 @@
     </div>
   </div>
 
-  <div class="show-forest-photos">
-    <h1><i class="fa-solid fa-arrow-left-long"></i>   Swipe   <i class="fa-solid fa-arrow-right-long"></i></i></h1>
-    <div class="row-forest-photos">
-      <% @forest.photos.each do |photo| %>
-        <div class="forest-photo">
-          <%= cl_image_tag photo.key %>
-        </div>
-      <% end %>
+
+  <% if @forest.photos.size < 2 %>
+    <div class="show-forest-one">
+      <div class="row-forest-one">
+        <% @forest.photos.each do |photo| %>
+          <div class="forest-photo-one">
+            <%= cl_image_tag photo.key %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="show-forest-photos">
+      <h1><i class="fas fa-arrow-left"></i>   Swipe   <i class="fas fa-arrow-right"></i></h1>
+      <div class="row-forest-photos">
+        <% @forest.photos.each do |photo| %>
+          <div class="forest-photo">
+            <%= cl_image_tag photo.key %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
   <div class="details-booking-container">
     <div class="forest-details">
@@ -42,65 +55,76 @@
         <p>Superhosts are experienced gnomes, who are commited to to provinding great stays for their guests.</p>
         <h3>Great forest</h3>
         <p>100% of recent guests gave the forest a 5-star rating.</p>
-        <h3>Free cancellation before march 23</h3>
+        <h3>Free cancellation 24h before</h3>
       </div>
 
       <div class="forest-description">
-        <h4> <%= @forest.description %></h4>
+        <h3>Some details</h3>
+        <p> <%= @forest.description %></p>
       </div>
 
       <div class="offers">
         <h3>What this forest offers</h3>
-        <p>campfire</p>
-        <p>barbecue</p>
-        <p>dwarf toss</p>
-        <p>bikes</p>
-        <p>mushroom picking</p>
-        <p>picnic</p>
-        <p>building hut</p>
-        <p>tree climbing</p>
+        <div class="pictos-offers">
+          <p>🔥 Campfire</p>
+          <p>👨‍🍳 Potion making</p>
+          <p>🎯 Dwarf toss</p>
+          <p>🚲 Bikes</p>
+          <p>🍄 Mushroom picking</p>
+          <p>🧺 Picnic</p>
+          <p>⛺ Building hut</p>
+          <p>🌲 Tree climbing</p>
+        </div>
       </div>
-
-      <div class="calendar">
-        <h4>5 nights in <%= @forest.address%></h2>
-      </div>
-
 
       <div class="forest-reviews">
+          <h3>Reviews</h3>
+          <% @forest.forest_reviews.each do |review| %>
+            <div class="review-card">
+              <div class="name-rating">
+                <div class="user-review-infos">
+                  <% if review.user.photo.key %>
+                    <%= cl_image_tag review.user.photo.key, crop: :fill, class: 'avatar' %>
+                  <% else %>
+                    <%= image_tag 'gnome-avatar.jpg', class: 'avatar' %>
+                  <% end %>
+                  <p class="fullname"><%= review.user.first_name %> <%= review.user.last_name %></p>
+                </div>
+                <p class="stars"><%= "★" * review.rating %><%= "☆" * (5 - review.rating) %></p>
+              </div>
+              <div class="comment">
+                <p><%= review.comment %></p>
+              </div>
+            </div>
+          <% end %>
       </div>
     </div>
 
     <div class="forest-booking-card">
       <h3><%=@forest.price%> € / night </h3>
-      <table>
-        <tr>Your booking</tr>
-        <tr>
-          <td> Check-in </td>
-          <td> Check-out </td>
-        </tr>
-        <tr>
-          <td>Total price</td>
-        </tr>
-      </table>
-      <a class="btn-outline-success" href="">Book now</a>
-    </div>
+      <br>
+      <div class="booking-title">
+        <h3>Booking</h3>
+      </div>
 
+      <%= simple_form_for [@forest, @booking],
+        wrapper: :floating_labels_form,
+        wrapper_mappings: {
+          select: :floating_labels_select
+        }  do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :start_date, as: :string, required: true, input_html: {id: "booking_start_date"} %>
+          <%= f.input :end_date, as: :string, required: true, input_html: {id: "booking_end_date"} %>
+          <div class="buttons">
+            <%= f.button :button, 'Reset dates', :type => 'reset', :class => 'btn btn-reset' %>
+            <%= f.submit "Submit booking", class: "button-booking" %>
+          </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
-<div>
-  <%= link_to 'Book forest', new_forest_booking_path(@forest) %>
-  <%= link_to 'Edit forest', edit_forest_path %>
-  <%= link_to "Delete forest",
-              forest_path(@forest),
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-</div>
 
-<% @forest.forest_reviews.each do |review| %>
-  <p><%= review.comment %></p>
-<% end %>
-<%= link_to 'Add a review', new_forest_forest_review_path(@forest) %>
 
 <% @forest.bookings.each do |booking| %>
   <p><%= booking.start_date %> <%= booking.end_date %></p>
@@ -109,5 +133,3 @@
             data: { confirm: "Are you sure?" } %>
   </small>
 <% end %>
-
-<%= link_to 'Book the forest', new_forest_booking_path(@forest)  %>
