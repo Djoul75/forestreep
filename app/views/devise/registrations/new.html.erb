@@ -1,31 +1,35 @@
-<h2>Sign up</h2>
+<div class="container">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <h2>Sign up</h2>
 
-  <div class="form-inputs">
-    <%= f.input :first_name, placeholder: "Forrest", required: true %>
-    <%= f.input :last_name, placeholder: "Gump", required: true %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                placeholder: "forrest.gump@run.com",
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                placeholder: "•••••••••",
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                placeholder: "•••••••••",
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :photo, as: :file %>
-  </div>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-inputs">
+      <%= f.input :first_name, placeholder: "Forrest", required: true %>
+      <%= f.input :last_name, placeholder: "Gump", required: true %>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  placeholder: "forrest.gump@run.com",
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  placeholder: "•••••••••",
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  placeholder: "•••••••••",
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :photo, as: :file %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="form-actions nav-login mt-5" style="width: 120px; text-align: center">
+      <%= f.button :submit, "Sign up" %>
+    </div>
+  <% end %>
+
+  <p class="mt-5"><%= render "devise/shared/links"%></p>
+
+</div>
