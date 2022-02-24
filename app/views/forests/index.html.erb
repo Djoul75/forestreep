@@ -1,27 +1,32 @@
 <div class="wrap">
 
   <div class="cards-container">
-    <% @forests.each do |forest| %>
-      <%= link_to forest_path(forest) do %>
-        <div class="forest-card">
-          <div class="card-image">
-            <% if forest.photos.first %>
-              <%= cl_image_tag forest.photos.first.key %>
-            <% else %>
-              <%= image_tag 'forests/forest1.jpg'%>
-            <% end %>
+    <% if @forests.any? %>
+      <p><%=  @forests.size %> results for <%= (params[:query]) %>:</p>
+      <% @forests.each do |forest| %>
+        <%= link_to forest_path(forest) do %>
+          <div class="forest-card">
+            <div class="card-image">
+              <% if forest.photos.first %>
+                <%= cl_image_tag forest.photos.first.key %>
+              <% else %>
+                <%= image_tag 'forests/forest1.jpg'%>
+              <% end %>
+            </div>
+            <div class="card-infos">
+              <h3><%= forest.title %></h3>
+              <p><%= forest.description %></p>
+              <p><%= forest.address %></p>
+            </div>
+            <div class="coeur-price">
+              <i class="far fa-heart"></i>
+              <p><%= forest.price.to_i %>€ / night</p>
+            </div>
           </div>
-          <div class="card-infos">
-            <h3><%= forest.title %></h3>
-            <p><%= forest.description %></p>
-            <p><%= forest.address %></p>
-          </div>
-          <div class="coeur-price">
-            <i class="far fa-heart"></i>
-            <p><%= forest.price.to_i %>€ / night</p>
-          </div>
-        </div>
+        <% end %>
       <% end %>
+    <% else %>
+      <p>Sorry, no result found for "<%= (params[:query]) %>"</p>
     <% end %>
 
 
