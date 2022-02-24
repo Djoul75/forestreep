@@ -59,7 +59,7 @@
   white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 60px;
+  max-height: 30px;
   // word-break: break-all;
 }
 
@@ -74,6 +74,7 @@
   i {
     font-size: 1.5rem;
     font-weight: lighter;
+    padding: 5px;
   }
 
   p {
