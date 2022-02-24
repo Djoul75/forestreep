@@ -1,1 +1,12 @@
 // Specific CSS for your home-page
+.home-exemples {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 3vw;
+
+  h1 {
+    text-align: center;
+    color: $dark-green;
+  }
+}
