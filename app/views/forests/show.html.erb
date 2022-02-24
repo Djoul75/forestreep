@@ -101,7 +101,9 @@
     </div>
 
     <div class="forest-booking-card">
-      <h3><%=@forest.price%> € / night </h3>
+      <div class='price-card-booking'>
+        <h3><%= @forest.price.to_i %> € / night </h3>
+      </div>
       <br>
       <div class="booking-title">
         <h3>Booking</h3>
@@ -117,6 +119,7 @@
           <%= f.input :end_date, as: :string, required: true, input_html: {id: "booking_end_date"} %>
           <div class="buttons">
             <%= f.button :button, 'Reset dates', :type => 'reset', :class => 'btn btn-reset' %>
+            <p>total price: <!--TODO (start_date - end_date) * @forest.price.to_i if not TODO '0' -->€</p>
             <%= f.submit "Submit booking", class: "button-booking" %>
           </div>
       <% end %>
