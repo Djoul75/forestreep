@@ -1,10 +1,37 @@
-<div class="navbar p-3">
-  <div id="logo">
-    <%= link_to '/' do %>
-      <%= image_tag 'logo.png', width: 50%>
-    <% end %>
+<div class="navbar-pages">
+  <div class="navbar p-3">
+    <div id="logo">
+      <%= link_to '/' do %>
+        <%= image_tag 'logo.png', width: 50%>
+      <% end %>
+    </div>
+
+
+    <div class="login-avatar">
+      <% if user_signed_in? %>
+        <div class="dropdown-toggle d-flex" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-controller="toggle-dropdown" data-action="click->toggle-dropdown#toggle">
+            <div class="ligne"></div>
+          <% if current_user.photo.key %>
+            <%= cl_image_tag current_user.photo.key, crop: :fill, class: 'avatar' %>
+          <% else %>
+            <%= image_tag 'gnome-avatar.jpg', class: 'avatar' %>
+          <% end %>
+        </div>
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <div id="test">
+            <%= link_to "My Forests", index_owner_forests_path, class: "dropdown-item" %>
+            <%= link_to "Add a Forest", '/forests/new', class: "dropdown-item" %>
+            <%= link_to "Settings", "#", class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </div>
+      <% else %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link nav-login" %>
+      <% end %>
+    </div>
   </div>
-  <div class="search-bar d-flex">
+
+  <div class="search-bar d-flex" data-controller="search-bar" data-action="scroll@window->search-bar#move">
     <input class="form-control form-control-lg border-end-0 border border-dark rounded-pill rounded-end" type="text" placeholder="Search..." />
     <span class="input-group-append">
       <%= link_to '/forests' do %>
@@ -20,28 +47,5 @@
       <%#= f.input :end_date %>
       <%#= f.submit class: "btn btn-outline-dark btn-lg border-start-0 rounded-pill rounded-start" value: "<i class='fa fa-search'></i>" %>
     <%# end %>
-  </div>
-
-  <div class="login-avatar">
-    <% if user_signed_in? %>
-      <div class="dropdown-toggle d-flex" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-controller="toggle-dropdown" data-action="click->toggle-dropdown#toggle">
-          <div class="ligne"></div>
-        <% if current_user.photo.key %>
-          <%= cl_image_tag current_user.photo.key, crop: :fill, class: 'avatar' %>
-        <% else %>
-          <%= image_tag 'gnome-avatar.jpg', class: 'avatar' %>
-        <% end %>
-      </div>
-      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <div id="test">
-          <%= link_to "My Forests", index_owner_forests_path, class: "dropdown-item" %>
-          <%= link_to "Add a Forest", '/forests/new', class: "dropdown-item" %>
-          <%= link_to "Settings", "#", class: "dropdown-item" %>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-        </div>
-      </div>
-    <% else %>
-        <%= link_to "Login", new_user_session_path, class: "nav-link nav-login" %>
-    <% end %>
   </div>
 </div>
