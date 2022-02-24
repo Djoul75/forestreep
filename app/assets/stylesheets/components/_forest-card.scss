@@ -53,10 +53,10 @@
 }
 
 .card-infos p {
-  font-size: 0.8rem;
+  // font-size: 0.8rem;
   text-align: justify;
   font-weight: lighter;
-  white-space: normal;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: 30px;
