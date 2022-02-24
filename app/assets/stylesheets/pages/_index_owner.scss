@@ -17,14 +17,33 @@
   width: 90%;
   background: $beige;
   padding: 5vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-.page-rentals {display: none;}
-.page-forests {display: none;}
-.page-notifications {display: none;}
-.page-messages {display: none;}
+.forests-cards {
 
-.page-rentals.active {display: unset};
-.page-forests.active {display: unset};
-.page-notifications.active {display: unset};
-.page-messages.active {display: unset};
+  a {
+  text-decoration: none;
+  color: $almost-black;
+  }
+
+  .icons-fa {
+    width: 100%;
+    padding-left: 30%;
+    display: flex;
+    justify-content: space-between;
+
+    .fa-eye:hover {
+      color: rgb(29, 114, 29);
+    }
+
+    .fa-edit:hover {
+      color: $beige;
+    }
+
+    .fa-trash-alt:hover {
+      color: rgb(250, 81, 81);
+    }
+  }
+}
