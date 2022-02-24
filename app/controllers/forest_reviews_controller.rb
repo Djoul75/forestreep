@@ -14,7 +14,7 @@ class ForestReviewsController < ApplicationController
     if @review.save
       redirect_to forest_path(@forest)
     else
-      render :new
+      render 'forests/show'
     end
   end
 
