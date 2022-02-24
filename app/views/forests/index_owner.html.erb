@@ -47,7 +47,7 @@
                       <i class="fas fa-trash-alt"></i>
                     <% end %>
                   </div>
-                  <p><%= booking.total_price.to_i %>€</p>
+                  <p><%= (booking.forest.price * (booking.end_date - booking.start_date).to_i).round %> €</p>
                 </div>
               </div>
             <% end %>
@@ -87,7 +87,7 @@
                       <i class="fas fa-trash-alt"></i>
                     <% end %>
                   </div>
-                  <p><%= forest.price.to_i %>€ / night</p>
+                  <p><%= forest.price.to_i %> € / night</p>
                 </div>
               </div>
           <% end %>
