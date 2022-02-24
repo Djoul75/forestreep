@@ -46,10 +46,10 @@
                     <%= link_to forest_path(forest) do %>
                       <i class="fas fa-eye"></i>
                     <% end %>
-                    <%= link_to forest_path(forest) do %>
+                    <%= link_to "/forests/#{forest.id}/edit" do %>
                       <i class="fas fa-edit"></i>
                     <% end %>
-                    <%= link_to forest_path(forest) do %>
+                    <%= link_to forest_path(forest), method: :delete, data: { confirm: "Are you sure?" }  do %>
                       <i class="fas fa-trash-alt"></i>
                     <% end %>
                   </div>

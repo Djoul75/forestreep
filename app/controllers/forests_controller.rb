@@ -40,7 +40,7 @@ class ForestsController < ApplicationController
     authorize @forest
     @forest.user = current_user
     if @forest.save
-      redirect_to forests_path
+      redirect_to '/forests/index_owner'
     else
       render :new
     end
@@ -62,7 +62,7 @@ class ForestsController < ApplicationController
   def destroy
     authorize @forest
     if @forest.destroy
-      redirect_to forests_path
+      redirect_to '/forests/index_owner'
     else
       redirect_to forest_path(@forest)
     end
