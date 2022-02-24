@@ -31,10 +31,18 @@
     </div>
   </div>
 
-  <div>
-    <%= form_tag forests_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], placeholder: "Find your next forestreep"%>
-    <% end %>
+  <div class='search-bar'>
+    <div class="input-bar">
+      <%= form_tag forests_path, method: :get do %>
+        <%= text_field_tag :query, params[:query], placeholder: "Find your next forestreep"%>
+    </div>
+    <div class="loupe">
+    <button type='submit'>
+    <%#= submit_tag "Search", class: "btn btn-primary" %>
+      <i class="fas fa-search"></i>
+    </button>
+    </div>
+      <% end %>
   </div>
   <%# <div class="search-bar d-flex" data-controller="search-bar" data-action="scroll@window->search-bar#move"> %>
      <%# <input class="form-control form-control-lg border-end-0 border border-dark rounded-pill rounded-end" type="text" placeholder="Search..." /> %>

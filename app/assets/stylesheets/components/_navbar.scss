@@ -28,14 +28,55 @@
   // background: transparent;
   position: absolute;
   width: 50%;
+  height: fit-content;
   z-index: 999999999;
   transform: translate(-50%, -50%);
   left: 50%;
-  transition: ease 1s;
-  top: 100%;
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
 
   button:hover {
     background: $kaki;
+  }
+
+  #query {
+    background: $beige;
+    border-radius: 50px 0 0 50px;
+    border: none;
+    width: 100%;
+    padding: 1vh 3%;
+    color: $almost-black;
+    font-size: large;
+  }
+
+  #query.active {
+    box-shadow: none;
+    border: none;
+  }
+
+  .input-bar {
+    width: 90%;
+    height: 100%;
+    color: $almost-black;
+  }
+
+  .loupe {
+    width: 10%;
+    button {
+      color: $almost-black;
+      padding-right: 3%;
+      width: 100%;
+      background: $kaki;
+      height: 100%;
+      border-radius: 0 50px 50px 0;
+      border: none;
+
+      &:hover {
+        color: $beige;
+        background-color: $dark-green;
+      }
+    }
   }
 }
 
