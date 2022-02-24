@@ -1,18 +1,20 @@
 class BookingsController < ApplicationController
+  before_action :forest_find, only: %i[new create destroy]
 
   def index
     @booking = policy_scope(Booking)
   end
 
   def new
-    @forest = Forest.find(params[:forest_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
-    @forest = Forest.find(params[:forest_id])
+    authorize @booking
     @booking.forest = @forest
+    @booking.user = current_user
     if @booking.save
       redirect_to forest_path(@forest)
     else
@@ -22,6 +24,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.destroy
     redirect_to forest_path(@forest)
   end
@@ -32,4 +35,7 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_date, :end_date)
   end
 
+  def forest_find
+    @forest = Forest.find(params[:forest_id])
+  end
 end
