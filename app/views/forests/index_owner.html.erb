@@ -16,8 +16,43 @@
   </div>
 
   <div class="tab-content dashboard-pages" id="v-pills-tabContent">
+
     <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
       <h1>My Rentals:</h1>
+        <% if current_user.bookings.length == 0 %>
+          <%= link_to 'Find your next Forestreep', forests_path %>
+        <% else %>
+          <div class="forests-cards">
+            <% current_user.bookings.each do |booking| %>
+              <div class="forest-card">
+                <div class="card-image">
+                  <% if booking.forest.photos.first %>
+                    <%= cl_image_tag booking.forest.photos.first.key %>
+                  <% else %>
+                    <%= image_tag 'forests/forest1.jpg'%>
+                  <% end %>
+                </div>
+                <div class="card-infos">
+                  <h3><%= booking.forest.title %></h3>
+                  <p>● Check-in :  <%= booking.start_date %> </p>
+                  <p>● Check-out : <%= booking.end_date %> </p>
+                  <p>In : <em><%= booking.forest.address %></em></p>
+                </div>
+                <div class="coeur-price">
+                  <div class="icons-fa">
+                    <%= link_to "/forests/#{booking.forest.id}" do %>
+                      <i class="fas fa-eye"></i>
+                    <% end %>
+                    <%= link_to "/forests/#{booking.forest.id}/bookings/#{booking.id}", method: :delete, data: { confirm: "Are you sure to delete this reservation?" }  do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                  </div>
+                  <p><%= booking.total_price.to_i %>€</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
     </div>
 
     <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -27,7 +62,6 @@
       <% else %>
         <div class="forests-cards">
           <% @forests.each do |forest| %>
-
               <div class="forest-card">
                 <div class="card-image">
                   <% if forest.photos.first %>
@@ -39,7 +73,7 @@
                 <div class="card-infos">
                   <h3><%= forest.title %></h3>
                   <p><%= forest.description %></p>
-                  <p><%= forest.address %></p>
+                  <p>In : <em><%= forest.address %></em></p>
                 </div>
                 <div class="coeur-price">
                   <div class="icons-fa">
@@ -56,7 +90,6 @@
                   <p><%= forest.price.to_i %>€ / night</p>
                 </div>
               </div>
-
           <% end %>
         </div>
       <% end %>
