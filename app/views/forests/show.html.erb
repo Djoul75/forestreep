@@ -101,3 +101,13 @@
   <p><%= review.comment %></p>
 <% end %>
 <%= link_to 'Add a review', new_forest_forest_review_path(@forest) %>
+
+<% @forest.bookings.each do |booking| %>
+  <p><%= booking.id %></p>
+  <small><%= link_to 'Delete booking', forest_booking_path(@forest.id, booking.id),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+  </small>
+<% end %>
+
+<%= link_to 'Book the forest', new_forest_booking_path(@forest)  %>
