@@ -103,7 +103,7 @@
 <%= link_to 'Add a review', new_forest_forest_review_path(@forest) %>
 
 <% @forest.bookings.each do |booking| %>
-  <p><%= booking.id %></p>
+  <p><%= booking.start_date %> <%= booking.end_date %></p>
   <small><%= link_to 'Delete booking', forest_booking_path(@forest.id, booking.id),
             method: :delete,
             data: { confirm: "Are you sure?" } %>
