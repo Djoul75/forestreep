@@ -102,7 +102,7 @@
 
     <div class="forest-booking-card">
       <div class='price-card-booking'>
-        <h3><%= @forest.price.to_i %> € / night </h3>
+        <h3> <span id="price"><%= @forest.price.to_i %></span> € / night </h3>
       </div>
       <br>
       <div class="booking-title">
@@ -110,6 +110,7 @@
       </div>
 
       <%= simple_form_for [@forest, @booking],
+        data: {controller: "total-price", action: "change->total-price#totalPrice"},
         wrapper: :floating_labels_form,
         wrapper_mappings: {
           select: :floating_labels_select
@@ -119,7 +120,7 @@
           <%= f.input :end_date, as: :string, required: true, input_html: {id: "booking_end_date"} %>
           <div class="buttons">
             <%= f.button :button, 'Reset dates', :type => 'reset', :class => 'btn btn-reset' %>
-            <p>total price: <!--TODO (start_date - end_date) * @forest.price.to_i if not TODO '0' -->€</p>
+            <p>Total price: <span data-total-price-target="totalprice">0</span> €</p>
             <%= f.submit "Submit booking", class: "button-booking" %>
           </div>
       <% end %>
