@@ -1,0 +1,57 @@
+.sign-up-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+
+  .card-login {
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.login-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+
+  .card-login {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .nav-login {
+      width: 100%;
+      margin-right: 0;
+    }
+
+    .form-inputs {
+      width: 30vh;
+    }
+  }
+
+  .links-login {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+      a {
+        background-color: $kaki;
+        text-decoration: none;
+        color: $almost-black;
+        border-radius: 50px;
+        padding: 0.5rem 1rem;
+
+        &:hover {
+          background: $camo-green;
+          color: $beige;
+        }
+      }
+  }
+}
