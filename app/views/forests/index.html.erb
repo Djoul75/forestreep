@@ -3,9 +3,9 @@
   <div class="cards-container">
     <% if @forests.any? %>
       <% if @forests.size == 1 %>
-        <p><%=  @forests.size %> result for <%= (params[:query]) %>:</p>
+        <p><%=  @forests.size %> Result for <strong><%= (params[:query]) %></strong></p>
       <% else %>
-        <p><%=  @forests.size %> results for <%= (params[:query]) %>:</p>
+        <p><%=  @forests.size %> Results for <strong><%= (params[:query]) %></strong></p>
       <% end %>
       <% @forests.each do |forest| %>
         <%= link_to forest_path(forest) do %>
@@ -28,13 +28,13 @@
               <% else %>
                 <%= image_tag 'gnome-avatar.jpg', class: 'avatar' %>
               <% end %>
-              <p><%= forest.price.to_i %>€ / night</p>
+              <p><%= forest.price.to_i %> € / night</p>
             </div>
           </div>
         <% end %>
       <% end %>
     <% else %>
-      <p>Sorry, we don't have any forests for your search yet 😬</p>
+      <p>Sorry, we don't have any forest matching your search 😬</p>
     <% end %>
 
 

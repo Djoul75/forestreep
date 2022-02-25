@@ -8,7 +8,7 @@
       <h1> <%= "Last Trip".pluralize(current_user.bookings.count) %></h1>
     </button>
     <button class="nav-link <%= 'active' unless params[:message] %>" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-      <h1> <%= "My Forest".pluralize(@forests.length) %> :</h1>
+      <h1> <%= "My Forest".pluralize(@forests.length) %></h1>
     </button>
     <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
       <h1>Notifications</h1>
@@ -44,8 +44,8 @@
                       <h3><%= booking.forest.title %></h3>
                       <p>(<%= (booking.end_date - booking.start_date).to_i.round  %> nights)</p>
                     </div>
-                    <p>● Check-in :  <%= booking.start_date.strftime("%A, %d %B %Y") %> </p>
-                    <p>● Check-out : <%= booking.end_date.strftime("%A, %d %B %Y") %> </p>
+                    <p>● Check-in:  <%= booking.start_date.strftime("%A, %d %B %Y") %> </p>
+                    <p>● Check-out: <%= booking.end_date.strftime("%A, %d %B %Y") %> </p>
                     <p class="address-card">In : <em><%= booking.forest.address %></em></p>
                   </div>
                   <div class="coeur-price-my-trips">
@@ -70,7 +70,7 @@
     <div class="tab-pane fade" id="v-pills-last" role="tabpanel" aria-labelledby="v-pills-last-tab">
       <h1> <%= "My Last Trip".pluralize(current_user.bookings.count) %></h1>
         <% if current_user.bookings.length == 0 %>
-          <h2 class='mt-5'>No Forestreep booked yet!</h2>
+          <h2 class='mt-5'>No ForesTreep booked yet!</h2>
           <div class="button-classic"><%= link_to 'Find your next Forestreep', forests_path %></div>
         <% else %>
           <div class="forests-cards">
@@ -89,8 +89,8 @@
                       <h3><%= booking.forest.title %></h3>
                       <p>(<%= (booking.end_date - booking.start_date).to_i.round  %> nights)</p>
                     </div>
-                    <p>● Check-in :  <%= booking.start_date.strftime("%A, %d %B %Y") %> </p>
-                    <p>● Check-out : <%= booking.end_date.strftime("%A, %d %B %Y") %> </p>
+                    <p>● Check-in:  <%= booking.start_date.strftime("%A, %d %B %Y") %> </p>
+                    <p>● Check-out: <%= booking.end_date.strftime("%A, %d %B %Y") %> </p>
                     <p class="address-card">In : <em><%= booking.forest.address %></em></p>
                   </div>
                   <div class="coeur-price-my-trips">
@@ -102,7 +102,7 @@
                         <i class="fas fa-star"></i>
                       <% end %>
                     </div>
-                    <p>Total price : <%= (booking.forest.price * (booking.end_date - booking.start_date).to_i).round %> €</p>
+                    <p>Total price: <%= (booking.forest.price * (booking.end_date - booking.start_date).to_i).round %> €</p>
                   </div>
                 </div>
               <% end %>
@@ -112,9 +112,9 @@
     </div>
 
     <div class="tab-pane fade <%= 'show active' unless params[:message] %>" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-       <h1> <%= "My Forest".pluralize(@forests.length) %> :</h1>
+       <h1> <%= "My Forest".pluralize(@forests.length) %></h1>
       <% if @forests.length == 0 %>
-        <h2 class='mt-5'>You don't have a property at the moment</h2>
+        <h2 class='mt-5'>You are not hosting any forest at the moment</h2>
         <div class="button-classic"><%= link_to 'Add your first rental forest', new_forest_path %></div>
       <% else %>
         <div class="forests-cards">
@@ -132,7 +132,7 @@
               <div class="card-infos">
                 <h3><%= forest.title %></h3>
                 <p><%= forest.description %></p>
-                <p>In : <em><%= forest.address %></em></p>
+                <p>Location: <em><%= forest.address %></em></p>
               </div>
               <div class="coeur-price">
                 <div class="icons-fa">
@@ -159,7 +159,7 @@
 
     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
       <h1>Notifications</h1>
-        <h2 class='mt-5'>You don't have notification at the moment</h2>
+        <h2 class='mt-5'>You don't have any notification at the moment</h2>
     </div>
 
     <div class="tab-pane fade <%= 'show active' if params[:message] %>" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
