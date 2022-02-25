@@ -1,5 +1,5 @@
 <div class="forest-show-container col-8 offset-2">
-  <%= link_to "Back to results page", '/forests', class: 'back-btn'%>
+
 
   <div class="forest-header-show">
     <div>
@@ -125,14 +125,5 @@
       <% end %>
     </div>
   </div>
+  <%= link_to "Back to results page", '/forests', class: 'back-btn m-3'%>
 </div>
-
-
-
-<% @forest.bookings.each do |booking| %>
-  <p><%= booking.start_date %> <%= booking.end_date %></p>
-  <small><%= link_to 'Delete booking', forest_booking_path(@forest.id, booking.id),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-  </small>
-<% end %>
