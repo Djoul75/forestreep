@@ -2,10 +2,13 @@
 <div class="d-flex wrapper align-items-start">
   <div class="nav flex-column nav-pills nav-lat" id="v-pills-tab" role="tablist" aria-orientation="vertical">
     <button class="nav-link" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
-      <h1> <%= "My Trip".pluralize(current_user.bookings.count) %> :</h1>
+      <h1> <%= "My Next Trip".pluralize(current_user.bookings.count) %></h1>
+    </button>
+    <button class="nav-link" id="v-pills-last-tab" data-bs-toggle="pill" data-bs-target="#v-pills-last" type="button" role="tab" aria-controls="v-pills-last" aria-selected="true">
+      <h1> <%= "My Last Trip".pluralize(current_user.bookings.count) %></h1>
     </button>
     <button class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-      <h1> <%= "My Forest".pluralize(@forests.length) %> :</h1>
+      <h1> <%= "My Forest".pluralize(@forests.length) %></h1>
     </button>
     <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
       <h1>Notifications</h1>
@@ -18,10 +21,11 @@
   <div class="tab-content dashboard-pages" id="v-pills-tabContent">
     <h1 class="welcome-back">Welcome Back <%= current_user.first_name %> !   🎉</h1>
 
+
     <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-      <h1> <%= "My Trip".pluralize(current_user.bookings.count) %> :</h1>
+       <h1> <%= "My Next Trip".pluralize(current_user.bookings.count) %></h1>
         <% if current_user.bookings.length == 0 %>
-          <h2 class='mt-5'>You don't have a rental at the moment</h2>
+          <h2 class='mt-5'>No Forestreep booked yet!</h2>
           <div class="button-classic"><%= link_to 'Find your next Forestreep', forests_path %></div>
         <% else %>
           <div class="forests-cards">
@@ -37,31 +41,72 @@
                 <div class="card-infos-rental">
                   <div class="name-nbday">
                     <h3><%= booking.forest.title %></h3>
-                    <p>(<%= (booking.end_date - booking.start_date).to_i.round  %> days)</p>
+                    <p>(<%= (booking.end_date - booking.start_date).to_i.round  %> nights)</p>
                   </div>
                   <p>● Check-in :  <%= booking.start_date.strftime("%A, %d %B %Y") %> </p>
                   <p>● Check-out : <%= booking.end_date.strftime("%A, %d %B %Y") %> </p>
                   <p class="address-card">In : <em><%= booking.forest.address %></em></p>
                 </div>
-                <div class="coeur-price">
+                <div class="coeur-price-my-trips">
                   <div class="icons-fa">
                     <%= link_to "/forests/#{booking.forest.id}" do %>
                       <i class="fas fa-eye"></i>
-                    <% end %>
-                    <%= link_to "/forests/#{booking.forest.id}/forest_reviews/new" do %>
-                      <i class="fas fa-edit"></i>
                     <% end %>
                     <%= link_to "/forests/#{booking.forest.id}/bookings/#{booking.id}", method: :delete, data: { confirm: "Are you sure to delete this reservation?" }  do %>
                       <i class="fas fa-trash-alt"></i>
                     <% end %>
                   </div>
-                  <p><%= (booking.forest.price * (booking.end_date - booking.start_date).to_i).round %> €</p>
+                  <p>Total price : <%= (booking.forest.price * (booking.end_date - booking.start_date).to_i).round %> €</p>
                 </div>
               </div>
             <% end %>
           </div>
         <% end %>
     </div>
+
+
+    <div class="tab-pane fade" id="v-pills-last" role="tabpanel" aria-labelledby="v-pills-last-tab">
+      <h1> <%= "My Last Trip".pluralize(current_user.bookings.count) %></h1>
+        <% if current_user.bookings.length == 0 %>
+          <h2 class='mt-5'>No Forestreep booked yet!</h2>
+          <div class="button-classic"><%= link_to 'Find your next Forestreep', forests_path %></div>
+        <% else %>
+          <div class="forests-cards">
+            <% current_user.bookings.each do |booking| %>
+              <div class="forest-card">
+                <div class="card-image">
+                  <% if booking.forest.photos.first %>
+                    <%= cl_image_tag booking.forest.photos.first.key %>
+                  <% else %>
+                    <%= image_tag 'forests/forest1.jpg'%>
+                  <% end %>
+                </div>
+                <div class="card-infos-rental">
+                  <div class="name-nbday">
+                    <h3><%= booking.forest.title %></h3>
+                    <p>(<%= (booking.end_date - booking.start_date).to_i.round  %> nights)</p>
+                  </div>
+                  <p>● Check-in :  <%= booking.start_date.strftime("%A, %d %B %Y") %> </p>
+                  <p>● Check-out : <%= booking.end_date.strftime("%A, %d %B %Y") %> </p>
+                  <p class="address-card">In : <em><%= booking.forest.address %></em></p>
+                </div>
+                <div class="coeur-price-my-trips">
+                  <div class="icons-fa">
+                    <%= link_to "/forests/#{booking.forest.id}" do %>
+                      <i class="fas fa-eye"></i>
+                    <% end %>
+                    <%= link_to "/forests/#{booking.forest.id}/forest_reviews/new" do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                  </div>
+                  <p>Total price : <%= (booking.forest.price * (booking.end_date - booking.start_date).to_i).round %> €</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+
 
     <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
        <h1> <%= "My Forest".pluralize(@forests.length) %> :</h1>
@@ -107,6 +152,7 @@
         </div>
       <% end %>
     </div>
+
 
     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
       <h1>Notifications</h1>
