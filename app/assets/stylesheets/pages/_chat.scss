@@ -1,10 +1,20 @@
 
-.container {
+.container-messages {
   margin: 0 0;
   background: $beige;
   padding: 0;
   border-radius: 7px;
   border: 2px solid $almost-black;
+}
+
+.container-all-app {
+  width: 100%;
+  height: 100%;
+}
+
+.chat-left {
+  height: 100%;
+  overflow-y: scroll;
 }
 
 .profile-image {
@@ -16,7 +26,10 @@
 .settings-tray {
   background: $kaki;
   padding: 10px 15px;
-  border-radius: 7px;
+
+  .active {
+    background-color: $kaki;
+  }
 
   .no-gutters {
     padding: 0;
@@ -179,7 +192,7 @@ hr {
   align-items: baseline;
   padding: 10px 15px;
   align-items: center;
-  margin-top: 19px;
+  margin-top: 66px;
   bottom: 0;
 
   input {
@@ -199,5 +212,22 @@ hr {
 
   .text-muted {
     color: $almost-black;
+  }
+
+  .chat-right {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-panel {
+    height: 100%
+  }
+
+  .row-barre-envoi {
+    margin-top: 20vh;
+    --bs-gutter-x: 0;
   }
 }
