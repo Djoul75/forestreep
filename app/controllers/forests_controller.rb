@@ -1,3 +1,5 @@
+require 'date'
+
 class ForestsController < ApplicationController
   before_action :forest_find, only: %i[show edit update destroy]
 
@@ -24,6 +26,7 @@ class ForestsController < ApplicationController
   def index_owner
     @forests = Forest.where(user: current_user)
     authorize @forests
+    @today = Date.today
   end
 
   def show
