@@ -1,26 +1,31 @@
-.form-text{
+.container-new-forest {
+  margin: 5vh 0;
+  width: 100%;
+}
+
+.form-text {
   margin-top: 0.25rem;
   font-size: 0.875em;
   color: #6c757d;
 }
 
-.form-inline{
+.form-inline {
   display: flex;
   justify-content: space-between;
   flex-grow: 4;
 }
 
-.form-left{
+.form-left {
   flex: 1 1 auto;
   margin-right: 10px;
 }
 
-.form-right{
+.form-right {
   flex: 1 1 auto;
 }
 
-#form-title{
-  h1{
+#form-title {
+  h1 {
     margin: 0px;
   }
 }
