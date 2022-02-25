@@ -1,9 +1,10 @@
 
 .container {
   margin: 0 0;
-  background: #fff;
+  background: $beige;
   padding: 0;
   border-radius: 7px;
+  border: 2px solid $almost-black;
 }
 
 .profile-image {
@@ -13,7 +14,7 @@
 }
 
 .settings-tray {
-  background: #eee;
+  background: $kaki;
   padding: 10px 15px;
   border-radius: 7px;
 
@@ -27,12 +28,12 @@
     i {
       margin-top: 10px;
       font-size: 25px;
-      color: grey;
+      color: $dark-green;
       margin-left: 14px;
       transition: .3s;
 
       &:hover {
-        color: $blue;
+        color: $almost-black;
         cursor: pointer;
       }
     }
@@ -40,7 +41,7 @@
 }
 
 .search-box {
-  background: #fafafa;
+  background: $kaki;
   padding: 10px 13px;
 
   .input-wrapper {
@@ -48,7 +49,7 @@
     border-radius: 40px;
 
     i {
-      color: grey;
+      color: $dark-green;
       margin-left: 7px;
       vertical-align: middle;
     }
@@ -61,7 +62,7 @@ input {
   width: 80%;
 
   &::placeholder {
-    color: #e3e3e3;
+    color: $beige;
     font-weight: 300;
     margin-left: 20px;
   }
@@ -75,11 +76,11 @@ input {
   padding: 10px 15px;
   display: flex;
   vertical-align: baseline;
-  background: #fff;
+  background: $beige;
   transition: .3s ease;
 
   &--grey {
-    background: #eee;
+    background: $kaki;
   }
 
   .text {
@@ -101,7 +102,7 @@ input {
   }
 
   &--onhover:hover {
-    background: $blue;
+    background: $kaki;
     cursor: pointer;
 
     p,
@@ -148,7 +149,7 @@ hr {
   &--right {
     &:after {
       right: 0;
-      border-left-color: $blue;
+      border-left-color: $dark-green;
 	    border-right: 0;
       margin-right: -20px;
     }
@@ -167,13 +168,13 @@ hr {
 
 .offset-md-9 {
   .chat-bubble {
-    background: $blue;
+    background: $dark-green;
     color: #fff;
   }
 }
 
 .chat-box-tray {
-  background: #eee;
+  background: $kaki;
   display: flex;
   align-items: baseline;
   padding: 10px 15px;
@@ -187,12 +188,16 @@ hr {
   }
 
   i {
-    color: grey;
+    color: $dark-green;
     font-size: 30px;
     vertical-align: middle;
 
     &:last-of-type {
       margin-left: 25px;
     }
+  }
+
+  .text-muted {
+    color: $almost-black;
   }
 }
