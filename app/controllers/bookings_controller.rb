@@ -11,12 +11,13 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     authorize @booking
     if available?
-      flash.alert = 'Already booked'
+      flash.alert = 'Forest is already booked on this period'
       redirect_to forest_path(@forest)
     else
       @booking.forest = @forest
       @booking.user = current_user
       if @booking.save
+        flash[:success] = 'Your booking has been saved'
         redirect_to forest_path(@forest)
       else
         render "/forests/show"
