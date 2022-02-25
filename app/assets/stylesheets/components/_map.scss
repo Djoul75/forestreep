@@ -4,3 +4,16 @@
   top: 10vh;
   width: 50%;
 }
+
+.mapboxgl-popup-content {
+  width: 150px;
+  max-height: 150px;
+  background-color: #e6dfbf;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.mapboxgl-popup-content h2 {
+  font-size: 16px;
+  font-weight: bold;
+}

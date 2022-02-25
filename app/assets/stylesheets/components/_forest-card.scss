@@ -109,13 +109,36 @@
 }
 
 .coeur-price-my-trips {
-  // display: flex;
-  // flex-direction: column;
-  // width: 20%;
-  // height: 15vh;
-  // justify-content: space-between;
-  align-items: end;
-  justify-content: end;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 15vh;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  .icons-fa-trip {
+    width: 100%;
+    padding-left: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .fa-eye:hover {
+      color: rgb(29, 114, 29);
+    }
+
+    .fa-star:hover {
+      color: rgb(246, 222, 0);
+    }
+
+    .fa-trash-alt:hover {
+      color: rgb(250, 81, 81);
+    }
+  }
+
+  a {
+    margin-left: 10%;
+  }
 
   i {
     font-size: 1.5rem;

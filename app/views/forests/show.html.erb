@@ -52,27 +52,27 @@
 
       <div class="infos">
         <h3><%= @forest.user.first_name %> <%= @forest.user.last_name %> is a Superhost</h3>
-        <p>Superhosts are experienced gnomes, who are commited to to provinding great stays for their guests.</p>
+        <p>Superhosts are experienced gnomes, who are commited to provinding great stays for their guests.</p>
         <h3>Great forest</h3>
         <p>100% of recent guests gave the forest a 5-star rating.</p>
-        <h3>Free cancellation 24h before</h3>
+        <h3>Free cancellation up to 24 hours prior</h3>
       </div>
 
       <div class="forest-description">
-        <h3>Some details</h3>
+        <h3>More details</h3>
         <p> <%= @forest.description %></p>
       </div>
 
       <div class="offers">
-        <h3>What this forest offers</h3>
+        <h3>This forest's perks</h3>
         <div class="pictos-offers">
           <p>🔥 Campfire</p>
           <p>👨‍🍳 Potion making</p>
-          <p>🎯 Dwarf toss</p>
-          <p>🚲 Bikes</p>
+          <p>🎯 Dwarf tossing</p>
+          <p>🚲 Biking</p>
           <p>🍄 Mushroom picking</p>
           <p>🧺 Picnic</p>
-          <p>⛺ Building hut</p>
+          <p>⛺ Hut building</p>
           <p>🌲 Tree climbing</p>
         </div>
       </div>
@@ -102,7 +102,7 @@
 
     <div class="forest-booking-card">
       <div class='price-card-booking'>
-        <h3><%= @forest.price.to_i %> € / night </h3>
+        <h3> <span id="price"><%= @forest.price.to_i %></span> € per night </h3>
       </div>
       <br>
       <div class="booking-title">
@@ -110,6 +110,7 @@
       </div>
 
       <%= simple_form_for [@forest, @booking],
+        data: {controller: "total-price", action: "change->total-price#totalPrice"},
         wrapper: :floating_labels_form,
         wrapper_mappings: {
           select: :floating_labels_select
@@ -119,7 +120,7 @@
           <%= f.input :end_date, as: :string, required: true, input_html: {id: "booking_end_date"} %>
           <div class="buttons">
             <%= f.button :button, 'Reset dates', :type => 'reset', :class => 'btn btn-reset' %>
-            <p>total price: <%#= (@forest.price * (booking.end_date - booking.start_date).to_i).round %><!--TODO (start_date - end_date) * @forest.price.to_i if not TODO '0' -->€</p>
+            <p>Total price: <span data-total-price-target="totalprice">0</span> €</p>
             <%= f.submit "Submit booking", class: "button-booking" %>
           </div>
       <% end %>
