@@ -170,6 +170,7 @@
     }
 
   }
+
   .forest-booking-card {
     width: 25%;
     border-radius: 10px;
@@ -180,11 +181,20 @@
     position: sticky;
     top: 12vh;
 
+    .price-card-booking {
+      text-align: center;
+    }
+
     .buttons {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: fit-content;
+
+      p{
+        margin-top: 3vh;
+        text-align: center;
+      }
 
       .btn {
         padding: 0;
@@ -201,7 +211,7 @@
         background-color: $beige;
         border-radius: 20px;
         color: $almost-black;
-        margin-top: 5vh;
+        margin-top: 1vh;
         height: 10vh;
         font-size: larger;
 

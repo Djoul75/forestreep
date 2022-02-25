@@ -16,11 +16,13 @@
   </div>
 
   <div class="tab-content dashboard-pages" id="v-pills-tabContent">
+    <h1 class="welcome-back">Welcome Back <%= current_user.first_name %> !   🎉</h1>
 
     <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
       <h1>My Rentals:</h1>
         <% if current_user.bookings.length == 0 %>
-          <%= link_to 'Find your next Forestreep', forests_path %>
+          <h2 class='mt-5'>You don't have a rental at the moment</h2>
+          <div class="button-classic"><%= link_to 'Find your next Forestreep', forests_path %></div>
         <% else %>
           <div class="forests-cards">
             <% current_user.bookings.each do |booking| %>
@@ -32,16 +34,22 @@
                     <%= image_tag 'forests/forest1.jpg'%>
                   <% end %>
                 </div>
-                <div class="card-infos">
-                  <h3><%= booking.forest.title %></h3>
-                  <p>● Check-in :  <%= booking.start_date %> </p>
-                  <p>● Check-out : <%= booking.end_date %> </p>
-                  <p>In : <em><%= booking.forest.address %></em></p>
+                <div class="card-infos-rental">
+                  <div class="name-nbday">
+                    <h3><%= booking.forest.title %></h3>
+                    <p>(<%= (booking.end_date - booking.start_date).to_i.round  %> days)</p>
+                  </div>
+                  <p>● Check-in :  <%= booking.start_date.strftime("%A, %d %B %Y") %> </p>
+                  <p>● Check-out : <%= booking.end_date.strftime("%A, %d %B %Y") %> </p>
+                  <p class="address-card">In : <em><%= booking.forest.address %></em></p>
                 </div>
                 <div class="coeur-price">
                   <div class="icons-fa">
                     <%= link_to "/forests/#{booking.forest.id}" do %>
                       <i class="fas fa-eye"></i>
+                    <% end %>
+                    <%= link_to "/forests/#{booking.forest.id}/forest_reviews/new" do %>
+                      <i class="fas fa-edit"></i>
                     <% end %>
                     <%= link_to "/forests/#{booking.forest.id}/bookings/#{booking.id}", method: :delete, data: { confirm: "Are you sure to delete this reservation?" }  do %>
                       <i class="fas fa-trash-alt"></i>
@@ -58,49 +66,62 @@
     <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
       <h1>My Forests:</h1>
       <% if @forests.length == 0 %>
-        <%= link_to 'Add a forest', new_forest_path %>
+        <h2 class='mt-5'>You don't have a property at the moment</h2>
+        <div class="button-classic"><%= link_to 'Add your first rental forest', new_forest_path %></div>
       <% else %>
         <div class="forests-cards">
+
           <% @forests.each do |forest| %>
-              <div class="forest-card">
-                <div class="card-image">
-                  <% if forest.photos.first %>
-                    <%= cl_image_tag forest.photos.first.key %>
-                  <% else %>
-                    <%= image_tag 'forests/forest1.jpg'%>
+
+            <div class="forest-card">
+              <div class="card-image">
+                <% if forest.photos.first %>
+                  <%= cl_image_tag forest.photos.first.key %>
+                <% else %>
+                  <%= image_tag 'forests/forest1.jpg'%>
+                <% end %>
+              </div>
+              <div class="card-infos">
+                <h3><%= forest.title %></h3>
+                <p><%= forest.description %></p>
+                <p>In : <em><%= forest.address %></em></p>
+              </div>
+              <div class="coeur-price">
+                <div class="icons-fa">
+                  <%= link_to forest_path(forest) do %>
+                    <i class="fas fa-eye"></i>
+                  <% end %>
+                  <%= link_to "/forests/#{forest.id}/edit" do %>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+                  <%= link_to forest_path(forest), method: :delete, data: { confirm: "Are you sure?" }  do %>
+                    <i class="fas fa-trash-alt"></i>
                   <% end %>
                 </div>
-                <div class="card-infos">
-                  <h3><%= forest.title %></h3>
-                  <p><%= forest.description %></p>
-                  <p>In : <em><%= forest.address %></em></p>
-                </div>
-                <div class="coeur-price">
-                  <div class="icons-fa">
-                    <%= link_to forest_path(forest) do %>
-                      <i class="fas fa-eye"></i>
-                    <% end %>
-                    <%= link_to "/forests/#{forest.id}/edit" do %>
-                      <i class="fas fa-edit"></i>
-                    <% end %>
-                    <%= link_to forest_path(forest), method: :delete, data: { confirm: "Are you sure?" }  do %>
-                      <i class="fas fa-trash-alt"></i>
-                    <% end %>
-                  </div>
-                  <p><%= forest.price.to_i %> € / night</p>
-                </div>
+                <p><%= forest.price.to_i %> € / night</p>
               </div>
+            </div>
+
           <% end %>
+
         </div>
       <% end %>
     </div>
 
     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
       <h1>Notifications</h1>
+        <% if @forests.length == 0 %>
+          <h2 class='mt-5'>You don't have notification at the moment</h2>
+        <% else %>
+          <h2 class='mt-5'>You have 5 notifications</h2>
+        <% end %>
     </div>
 
     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-      <h1>Messages</h1>
+      <div class="container-messages">
+        <%# <h1>Messages</h1> %>
+      <%= render 'shared/chat' %>
+      </div>
     </div>
   </div>
 </div>
