@@ -122,6 +122,18 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    .fa-eye:hover {
+      color: rgb(29, 114, 29);
+    }
+
+    .fa-star:hover {
+      color: rgb(246, 222, 0);
+    }
+
+    .fa-trash-alt:hover {
+      color: rgb(250, 81, 81);
+    }
   }
 
   a {
