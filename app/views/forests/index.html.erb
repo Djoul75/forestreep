@@ -8,7 +8,7 @@
         <p><%=  @forests.size %> Results for <strong><%= (params[:query]) %></strong></p>
       <% end %>
       <% @forests.each do |forest| %>
-        <%= link_to forest_path(forest) do %>
+        <%= link_to forest_path(forest), data: { turbolinks: 'false' } do %>
           <div class="forest-card">
             <div class="card-image">
               <% if forest.photos.first %>

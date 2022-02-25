@@ -100,7 +100,7 @@
       </div>
     </div>
 
-    <div class="forest-booking-card">
+    <div id="booking-card" class="forest-booking-card">
       <div class='price-card-booking'>
         <h3> <span id="price"><%= @forest.price.to_i %></span> € per night </h3>
       </div>
@@ -126,7 +126,5 @@
       <% end %>
     </div>
   </div>
-  <%= link_to "Back to results page", '/forests', class: 'back-btn m-3'%>
+  <%= link_to "Back to results page", '/forests', class: 'back-btn m-3', data: { turbolinks: 'false' } %>
 </div>
-
-<%= render 'shared/flashes' %>
