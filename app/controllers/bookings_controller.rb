@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
     @booking.destroy
-    redirect_to forest_path(@forest)
+    redirect_to '/forests/index_owner'
   end
 
   private
