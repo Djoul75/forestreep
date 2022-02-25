@@ -119,7 +119,7 @@
           <%= f.input :end_date, as: :string, required: true, input_html: {id: "booking_end_date"} %>
           <div class="buttons">
             <%= f.button :button, 'Reset dates', :type => 'reset', :class => 'btn btn-reset' %>
-            <p>total price: <!--TODO (start_date - end_date) * @forest.price.to_i if not TODO '0' -->€</p>
+            <p>total price: <%#= (@forest.price * (booking.end_date - booking.start_date).to_i).round %><!--TODO (start_date - end_date) * @forest.price.to_i if not TODO '0' -->€</p>
             <%= f.submit "Submit booking", class: "button-booking" %>
           </div>
       <% end %>
