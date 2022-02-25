@@ -14,12 +14,13 @@ class BookingsController < ApplicationController
     if availability == 'Please provide booking dates'
       render "/forests/show"
     elsif availability
-      flash.alert = 'Already booked'
+      flash.alert = 'Forest is already booked on this period'
       redirect_to forest_path(@forest)
     elsif !availability
       @booking.forest = @forest
       @booking.user = current_user
       if @booking.save
+        flash[:success] = 'Your booking has been saved'
         redirect_to '/forests/index_owner'
       else
         render "/forests/show"
