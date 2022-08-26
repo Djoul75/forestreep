@@ -34,7 +34,7 @@
   <div class='search-bar'>
     <div class="input-bar">
       <%= form_tag forests_path, method: :get do %>
-        <%= text_field_tag :query, params[:query], placeholder: "Find your next forestreep"%>
+        <%= text_field_tag :query, params[:query], placeholder:"Find your next forestreep", class: ''%>
     </div>
     <div class="loupe">
     <button type='submit'>
@@ -44,5 +44,6 @@
     </div>
       <% end %>
   </div>
+
 
 </div>
